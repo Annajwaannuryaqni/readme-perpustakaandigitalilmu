@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perpustakaan Digital Ilmu — Dokumentasi Proyek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EFE3;
+    --card:#FBF8F0;
+    --navy-950:#0B1524;
+    --navy-900:#0F1E33;
+    --navy-800:#17304D;
+    --ocean-500:#2E7CA6;
+    --ocean-400:#5AA9C9;
+    --gold-600:#A9791F;
+    --gold-500:#C9971F;
+    --ink-900:#141B26;
+    --ink-600:#4A5568;
+    --rule:#DAD2BC;
+    --rule-dark:#28405E;
+    --radius:10px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink-900);
+    font-family:'Inter',sans-serif;
+    font-size:15.5px;
+    line-height:1.65;
+  }
+  h1,h2,h3,h4{
+    font-family:'Poppins',sans-serif;
+    margin:0 0 .5em 0;
+    color:var(--navy-950);
+  }
+  a{color:var(--ocean-500);}
+  code, pre, .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:260px 1fr;
+    min-height:100vh;
+  }
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr;}
+    .catalog{display:none;}
+    .catalog.open{display:block;position:fixed;inset:0;z-index:50;overflow-y:auto;}
+  }
+
+  /* ---------- Sidebar: "card catalog" drawers ---------- */
+  .catalog{
+    background:var(--navy-950);
+    color:#CBD8E6;
+    padding:28px 0 40px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    border-right:1px solid var(--rule-dark);
+  }
+  .catalog-brand{
+    padding:0 24px 22px;
+    border-bottom:1px solid var(--rule-dark);
+    margin-bottom:6px;
+  }
+  .catalog-brand .mark{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;height:34px;
+    border:1.5px solid var(--gold-500);
+    color:var(--gold-500);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    border-radius:3px;
+    margin-bottom:10px;
+  }
+  .catalog-brand h1{
+    font-size:16px;
+    color:#F3EFE3;
+    line-height:1.3;
+    margin:0 0 4px;
+  }
+  .catalog-brand p{
+    margin:0;
+    font-size:12px;
+    color:#7E93AC;
+  }
+
+  .drawer-group{padding:18px 0 4px;}
+  .drawer-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#5F7590;
+    padding:0 24px 8px;
+  }
+  .drawer-group a{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    padding:7px 24px;
+    color:#B9C7D6;
+    text-decoration:none;
+    font-size:13.5px;
+    border-left:2px solid transparent;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .drawer-group a .tab-no{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:#496179;
+  }
+  .drawer-group a:hover{
+    background:rgba(90,169,201,0.08);
+    color:#EAF1F7;
+    border-left-color:var(--ocean-400);
+  }
+
+  /* ---------- Mobile toggle ---------- */
+  .mobile-bar{
+    display:none;
+    position:sticky; top:0; z-index:40;
+    background:var(--navy-950);
+    color:#EAF1F7;
+    padding:14px 18px;
+    align-items:center;
+    justify-content:space-between;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    border-bottom:1px solid var(--rule-dark);
+  }
+  .mobile-bar button{
+    background:none;border:1px solid var(--rule-dark);color:#EAF1F7;
+    border-radius:6px;padding:6px 10px;font-size:13px;cursor:pointer;
+  }
+  @media (max-width:880px){ .mobile-bar{display:flex;} }
+
+  /* ---------- Main content ---------- */
+  main{padding:0;}
+  .hero{
+    background:
+      radial-gradient(ellipse 700px 380px at 82% -10%, rgba(90,169,201,.22), transparent 60%),
+      var(--navy-950);
+    color:#EAF1F7;
+    padding:72px 64px 64px;
+    position:relative;
+    border-bottom:6px solid var(--gold-500);
+  }
+  @media (max-width:640px){ .hero{padding:48px 24px;} }
+
+  .hero .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-500);
+    margin-bottom:18px;
+  }
+  .hero h2{
+    color:#FBF8F0;
+    font-size:clamp(30px,4.2vw,46px);
+    line-height:1.12;
+    max-width:720px;
+    margin-bottom:16px;
+  }
+  .hero .sub{
+    color:#AEC3D6;
+    max-width:600px;
+    font-size:16px;
+    margin-bottom:30px;
+  }
+  .hero .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;}
+  .badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    padding:5px 11px;
+    border:1px solid var(--rule-dark);
+    border-radius:20px;
+    color:#B9C7D6;
+    background:rgba(255,255,255,.02);
+  }
+
+  /* due-date stamp card, signature element */
+  .stamp-card{
+    background:var(--card);
+    color:var(--ink-900);
+    max-width:420px;
+    border-radius:6px;
+    box-shadow:0 20px 40px -18px rgba(0,0,0,.55);
+    border:1px solid #E4DCC4;
+    overflow:hidden;
+  }
+  .stamp-card .top{
+    background:var(--gold-500);
+    color:var(--navy-950);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:8px 16px;
+    display:flex;justify-content:space-between;
+  }
+  .stamp-card .rows{padding:14px 16px 16px;}
+  .stamp-row{
+    display:grid;
+    grid-template-columns:96px 1fr 1fr;
+    gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    padding:6px 0;
+    border-bottom:1px dashed #D8CDA8;
+    color:var(--ink-600);
+  }
+  .stamp-row:last-child{border-bottom:none;}
+  .stamp-row b{color:var(--navy-950);}
+
+  section{
+    padding:56px 64px;
+    border-bottom:1px solid var(--rule);
+    max-width:980px;
+  }
+  @media (max-width:640px){ section{padding:40px 24px;} }
+
+  .kicker{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold-600);
+    margin-bottom:10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .kicker::before{
+    content:"";
+    width:22px;height:1px;background:var(--gold-600);
+    display:inline-block;
+  }
+  section h2{font-size:26px;margin-bottom:18px;}
+  section p{color:var(--ink-600);max-width:70ch;}
+
+  .role-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:14px;
+    margin-top:22px;
+  }
+  .role-card{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:18px 18px 16px;
+  }
+  .role-card .idx{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold-600);
+    margin-bottom:8px;
+  }
+  .role-card h4{font-size:15px;margin-bottom:6px;}
+  .role-card p{font-size:13.5px;margin:0;color:var(--ink-600);}
+
+  .feature-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;}
+  .feature-list li{
+    display:flex;gap:12px;align-items:flex-start;
+    padding:12px 16px;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    font-size:14px;
+  }
+  .feature-list li .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--ocean-500);
+    margin-top:7px;flex-shrink:0;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    font-size:13.5px;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  th,td{
+    text-align:left;
+    padding:10px 14px;
+    border-bottom:1px solid var(--rule);
+  }
+  th{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--gold-600);
+    background:#EFE8D4;
+  }
+  tr:last-child td{border-bottom:none;}
+  td code{background:#EFE8D4;padding:1px 6px;border-radius:4px;font-size:12px;}
+
+  pre{
+    background:var(--navy-950);
+    color:#D7E4EE;
+    padding:20px 22px;
+    border-radius:8px;
+    overflow-x:auto;
+    font-size:12.8px;
+    line-height:1.6;
+    margin-top:18px;
+    border:1px solid var(--rule-dark);
+  }
+  pre .c1{color:#7E93AC;}
+  pre .fold{color:var(--gold-500);}
+
+  .note{
+    margin-top:18px;
+    border-left:3px solid var(--gold-500);
+    background:#EFE8D4;
+    padding:12px 16px;
+    border-radius:0 8px 8px 0;
+    font-size:13.5px;
+    color:var(--ink-900);
+  }
+  .note b{color:var(--navy-950);}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
+  @media (max-width:700px){ .two-col{grid-template-columns:1fr;} }
+
+  .stack{
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .stack h4{font-size:13.5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-600);margin-bottom:10px;}
+  .stack ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-600);}
+  .stack li{margin-bottom:4px;}
+
+  footer{
+    padding:40px 64px 60px;
+    color:#7E93AC;
+    background:var(--navy-950);
+    font-size:12.5px;
+  }
+  footer a{color:var(--ocean-400);}
+  @media (max-width:640px){ footer{padding:32px 24px 48px;} }
+</style>
+</head>
+<body>
+
+<div class="mobile-bar">
+  <span>📚 Perpustakaan Digital Ilmu</span>
+  <button onclick="document.querySelector('.catalog').classList.toggle('open')">Daftar Isi</button>
+</div>
+
+<div class="shell">
+  <nav class="catalog">
+    <div class="catalog-brand">
+      <span class="mark">PDI</span>
+      <h1>Perpustakaan<br>Digital Ilmu</h1>
+      <p>Dokumentasi proyek UKK RPL</p>
+    </div>
+
+    <div class="drawer-group">
+      <div class="drawer-label">Ringkasan</div>
+      <a href="#tentang"><span class="tab-no">01</span>Tentang Project</a>
+      <a href="#fitur"><span class="tab-no">02</span>Fitur Utama</a>
+      <a href="#peran"><span class="tab-no">03</span>Peran Pengguna</a>
+    </div>
+
+    <div class="drawer-group">
+      <div class="drawer-label">Teknis</div>
+      <a href="#teknologi"><span class="tab-no">04</span>Teknologi</a>
+      <a href="#struktur"><span class="tab-no">05</span>Struktur Folder</a>
+      <a href="#database"><span class="tab-no">06</span>Struktur Database</a>
+      <a href="#keamanan"><span class="tab-no">07</span>Keamanan</a>
+    </div>
+
+    <div class="drawer-group">
+      <div class="drawer-label">Menjalankan</div>
+      <a href="#instalasi"><span class="tab-no">08</span>Instalasi</a>
+    </div>
+
+    <div class="drawer-group">
+      <div class="drawer-label">Lainnya</div>
+      <a href="#kontributor"><span class="tab-no">09</span>Kontributor & Lisensi</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Dokumentasi Proyek · UKK RPL 2025/2026</div>
+      <h2>Sistem sirkulasi buku perpustakaan sekolah, dari katalog sampai denda keterlambatan.</h2>
+      <p class="sub">Aplikasi web dibangun dengan PHP native + MySQL untuk mengelola koleksi buku, keanggotaan siswa, dan seluruh proses peminjaman–pengembalian secara digital.</p>
+      <div class="badges">
+        <span class="badge">PHP native</span>
+        <span class="badge">MySQL / MariaDB</span>
+        <span class="badge">PDO Prepared Statement</span>
+        <span class="badge">Tailwind CSS</span>
+        <span class="badge">Chart.js</span>
+      </div>
+
+      <div class="stamp-card">
+        <div class="top"><span>Kartu Peminjaman</span><span>No. 001</span></div>
+        <div class="rows">
+          <div class="stamp-row"><span>Judul</span><b>Perpustakaan Digital Ilmu</b><span></span></div>
+          <div class="stamp-row"><span>Jenis</span><span>Aplikasi Web</span><span></span></div>
+          <div class="stamp-row"><span>Status</span><b>Dipinjam — Aktif</b><span></span></div>
+          <div class="stamp-row"><span>Peran</span><span>Admin · Petugas · Siswa</span><span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="tentang">
+      <div class="kicker">01 — Ringkasan</div>
+      <h2>Tentang Project</h2>
+      <p>Aplikasi manajemen perpustakaan sekolah berbasis web, dibangun dengan PHP native + MySQL. Digunakan untuk mengelola koleksi buku, pendaftaran anggota (siswa), serta proses peminjaman dan pengembalian buku secara digital — lengkap dengan denda keterlambatan otomatis serta rating & ulasan buku.</p>
+      <p>Proyek ini dikerjakan sebagai tugas UKK (Uji Kompetensi Keahlian) SMK Konsentrasi Rekayasa Perangkat Lunak, "Pengembangan Aplikasi Peminjaman Buku".</p>
+    </section>
+
+    <section id="fitur">
+      <div class="kicker">02 — Ringkasan</div>
+      <h2>Fitur Utama</h2>
+      <ul class="feature-list">
+        <li><span class="dot"></span>Katalog buku publik dengan kategori & grafik statistik, dapat diakses tanpa login</li>
+        <li><span class="dot"></span>Peminjaman buku: pilih buku → konfirmasi stok → bukti peminjaman digital</li>
+        <li><span class="dot"></span>Pengembalian buku dengan perhitungan denda keterlambatan otomatis</li>
+        <li><span class="dot"></span>Rating & komentar buku, dapat diisi setelah buku dikembalikan</li>
+        <li><span class="dot"></span>Presensi kunjungan untuk siswa yang membaca di tempat tanpa meminjam</li>
+        <li><span class="dot"></span>Notifikasi in-app untuk admin, siswa, dan petugas</li>
+        <li><span class="dot"></span>CRUD buku, anggota, dan transaksi, lengkap dengan cetak laporan (panel admin)</li>
+      </ul>
+    </section>
+
+    <section id="peran">
+      <div class="kicker">03 — Ringkasan</div>
+      <h2>Peran Pengguna</h2>
+      <p>Sistem melayani empat jenis pengguna dengan hak akses berbeda, masing-masing lewat panel login terpisah.</p>
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="idx">Tanpa Login</div>
+          <h4>Pengunjung</h4>
+          <p>Melihat katalog buku dan ulasan tanpa perlu mendaftar.</p>
+        </div>
+        <div class="role-card">
+          <div class="idx">siswa/login.php</div>
+          <h4>Siswa / Anggota</h4>
+          <p>Mendaftar, meminjam & mengembalikan buku, memberi rating/komentar, presensi baca di tempat.</p>
+        </div>
+        <div class="role-card">
+          <div class="idx">admin/login.php</div>
+          <h4>Admin</h4>
+          <p>Mengelola data buku, anggota, transaksi, dan akun petugas.</p>
+        </div>
+        <div class="role-card">
+          <div class="idx">petugas/login.php</div>
+          <h4>Petugas</h4>
+          <p>Menginput peminjaman & pengembalian buku atas nama siswa.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="teknologi">
+      <div class="kicker">04 — Teknis</div>
+      <h2>Teknologi yang Digunakan</h2>
+      <table>
+        <thead><tr><th>Teknologi</th><th>Fungsi</th></tr></thead>
+        <tbody>
+          <tr><td>PHP (native)</td><td>Backend, tanpa framework</td></tr>
+          <tr><td>MySQL / MariaDB</td><td>Database</td></tr>
+          <tr><td>PDO</td><td>Akses database dengan prepared statement</td></tr>
+          <tr><td>Tailwind CSS (CDN)</td><td>Styling halaman publik</td></tr>
+          <tr><td>Chart.js (CDN)</td><td>Grafik statistik koleksi</td></tr>
+          <tr><td>JavaScript (vanilla)</td><td>Interaksi UI & notifikasi</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="struktur">
+      <div class="kicker">05 — Teknis</div>
+      <h2>Struktur Folder</h2>
+      <pre><span class="c1">project/</span>
+├── admin/          <span class="c1"># Panel Admin — kelola buku, anggota, transaksi, petugas</span>
+├── petugas/        <span class="c1"># Panel Petugas — input peminjaman/pengembalian</span>
+├── siswa/          <span class="c1"># Area Siswa — pinjam, kembalikan, rating, presensi</span>
+├── api/            <span class="c1"># Endpoint notifikasi</span>
+├── config/         <span class="c1"># Koneksi database & konstanta</span>
+├── includes/       <span class="c1"># Auth, CSRF, sidebar, notifikasi</span>
+├── assets/         <span class="c1"># CSS, JS, gambar, suara</span>
+├── uploads/         <span class="c1"># Cover buku</span>
+├── bantuan.php
+└── index.php       <span class="c1"># Landing page katalog publik</span></pre>
+      <div class="note"><b>Catatan —</b> folder <code>siswa/admin/</code> yang sempat ada di project adalah duplikat tidak sengaja (bukan bagian aktif aplikasi) dan sudah/akan dihapus.</div>
+    </section>
+
+    <section id="database">
+      <div class="kicker">06 — Teknis</div>
+      <h2>Struktur Database</h2>
+      <p>10 tabel: <code>admin</code>, <code>anggota</code>, <code>buku</code>, <code>kategori</code>, <code>komentar</code>, <code>kunjungan</code>, <code>notifications</code>, <code>petugas</code>, <code>rating</code>, <code>transaksi</code>.</p>
+      <table>
+        <thead><tr><th>Relasi</th><th>Keterangan</th></tr></thead>
+        <tbody>
+          <tr><td><code>buku.id_kategori</code> → <code>kategori.id_kategori</code></td><td>Satu kategori memiliki banyak buku</td></tr>
+          <tr><td><code>transaksi.id_anggota</code> → <code>anggota.id_anggota</code></td><td>Satu anggota memiliki banyak transaksi</td></tr>
+          <tr><td><code>transaksi.id_buku</code> → <code>buku.id_buku</code></td><td>Satu buku muncul di banyak transaksi</td></tr>
+          <tr><td><code>transaksi.id_petugas</code> → <code>petugas.id_petugas</code></td><td>Petugas yang memproses transaksi, bersifat opsional</td></tr>
+          <tr><td><code>rating</code>, <code>komentar</code> → <code>buku</code>, <code>anggota</code>, <code>transaksi</code></td><td>Terikat pada transaksi peminjaman — satu rating per transaksi</td></tr>
+          <tr><td><code>kunjungan.id_anggota</code> → <code>anggota.id_anggota</code></td><td>Log presensi kunjungan siswa</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="keamanan">
+      <div class="kicker">07 — Teknis</div>
+      <h2>Keamanan</h2>
+      <div class="two-col">
+        <div class="stack">
+          <h4>Diterapkan</h4>
+          <ul>
+            <li>Prepared statement (PDO) di seluruh query</li>
+            <li>Password di-hash dengan bcrypt</li>
+            <li>Session terpisah per role (admin / siswa / petugas)</li>
+            <li>CSRF token pada aksi penting (hapus, login, transaksi)</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <h4>Catatan</h4>
+          <ul>
+            <li>Kredensial database sebaiknya dipindahkan keluar dari source code (mis. lewat <code>.env</code>)</li>
+            <li>Jangan commit kredensial produksi ke repository publik</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="instalasi">
+      <div class="kicker">08 — Menjalankan</div>
+      <h2>Instalasi</h2>
+      <pre>1. Extract project ke folder web server (mis. htdocs/)
+2. Buat database baru, lalu import db_perpustakaan.sql
+3. Sesuaikan config/database.php dengan kredensial database kamu
+4. Jalankan Apache & MySQL
+5. Buka http://localhost/&lt;nama-folder&gt;/index.php</pre>
+      <div class="note"><b>Env lokal —</b> gunakan konfigurasi berikut sebagai contoh, sesuaikan dengan environment kamu:</div>
+      <pre>DB_HOST=localhost
+DB_NAME=db_perpustakaan
+DB_USER=root
+DB_PASSWORD=</pre>
+    </section>
+
+    <section id="kontributor" style="border-bottom:none;">
+      <div class="kicker">09 — Lainnya</div>
+      <h2>Kontributor & Lisensi</h2>
+      <p>Belum ada identitas kontributor yang tercantum di project, dan belum ada file lisensi yang menyertai repository ini.</p>
+    </section>
+
+    <footer>
+      Perpustakaan Digital Ilmu — Dokumentasi proyek UKK RPL · dibuat dari README.md project.
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>
