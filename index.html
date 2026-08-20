@@ -180,7 +180,7 @@
     font-size:16px;
     margin-bottom:30px;
   }
-  .hero .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;}
+  .hero .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
   .badge{
     font-family:'JetBrains Mono',monospace;
     font-size:11.5px;
@@ -190,6 +190,23 @@
     color:#B9C7D6;
     background:rgba(255,255,255,.02);
   }
+
+  .hero-links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px;}
+  .hero-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    font-weight:600;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:6px;
+    transition:opacity .15s;
+  }
+  .hero-link:hover{opacity:.85;}
+  .hero-link.primary{background:var(--gold-500);color:var(--navy-950);}
+  .hero-link.secondary{border:1px solid var(--rule-dark);color:#EAF1F7;}
 
   /* due-date stamp card, signature element */
   .stamp-card{
@@ -397,7 +414,14 @@
 
     <div class="drawer-group">
       <div class="drawer-label">Lainnya</div>
-      <a href="#kontributor"><span class="tab-no">09</span>Kontributor & Lisensi</a>
+      <a href="#halaman"><span class="tab-no">09</span>Daftar Halaman</a>
+      <a href="#kontributor"><span class="tab-no">10</span>Kontributor & Lisensi</a>
+    </div>
+
+    <div class="drawer-group">
+      <div class="drawer-label">Referensi</div>
+      <a href="README.md">📄 README.md</a>
+      <a href="https://github.com/Annajwaannuryaqni/Perpustakaan_digital_ilmu" target="_blank" rel="noopener">↗ Repository GitHub</a>
     </div>
   </nav>
 
@@ -412,6 +436,11 @@
         <span class="badge">PDO Prepared Statement</span>
         <span class="badge">Tailwind CSS</span>
         <span class="badge">Chart.js</span>
+      </div>
+
+      <div class="hero-links">
+        <a class="hero-link primary" href="README.md">📄 Baca README.md</a>
+        <a class="hero-link secondary" href="https://github.com/Annajwaannuryaqni/Perpustakaan_digital_ilmu" target="_blank" rel="noopener">↗ Buka Repository di GitHub</a>
       </div>
 
       <div class="stamp-card">
@@ -449,27 +478,27 @@
     <section id="peran">
       <div class="kicker">03 — Ringkasan</div>
       <h2>Peran Pengguna</h2>
-      <p>Sistem melayani empat jenis pengguna dengan hak akses berbeda, masing-masing lewat panel login terpisah.</p>
+      <p>Sistem melayani empat jenis pengguna dengan hak akses berbeda. Admin, Siswa, dan Petugas masing-masing memiliki formulir login terpisah dan sesi yang tidak saling tertukar.</p>
       <div class="role-grid">
         <div class="role-card">
           <div class="idx">Tanpa Login</div>
           <h4>Pengunjung</h4>
-          <p>Melihat katalog buku dan ulasan tanpa perlu mendaftar.</p>
+          <p>Mengakses landing page (<code>index.php</code>) dan halaman Bantuan. Dapat melihat katalog buku per kategori, membuka detail buku, serta membaca rating dan ulasan yang sudah ada. Tidak dapat meminjam buku tanpa mendaftar terlebih dahulu.</p>
         </div>
         <div class="role-card">
           <div class="idx">siswa/login.php</div>
           <h4>Siswa / Anggota</h4>
-          <p>Mendaftar, meminjam & mengembalikan buku, memberi rating/komentar, presensi baca di tempat.</p>
+          <p>Mendaftar mandiri, login ke dashboard pribadi, meminjam buku lewat alur konfirmasi bertahap, mengembalikan buku, memberi rating dan komentar setelah pengembalian, serta mencatat presensi saat membaca di tempat tanpa meminjam.</p>
         </div>
         <div class="role-card">
           <div class="idx">admin/login.php</div>
           <h4>Admin</h4>
-          <p>Mengelola data buku, anggota, transaksi, dan akun petugas.</p>
+          <p>Mengelola seluruh data master: tambah/ubah/hapus data buku dan anggota, memantau dan mencetak laporan seluruh transaksi, mengelola akun Petugas, serta melihat log kunjungan siswa.</p>
         </div>
         <div class="role-card">
           <div class="idx">petugas/login.php</div>
           <h4>Petugas</h4>
-          <p>Menginput peminjaman & pengembalian buku atas nama siswa.</p>
+          <p>Mencatat transaksi peminjaman dan pengembalian atas nama siswa secara langsung di meja sirkulasi, melihat data buku dan anggota, memantau daftar buku yang terlambat dikembalikan, serta melihat riwayat aktivitas transaksi yang telah diprosesnya.</p>
         </div>
       </div>
     </section>
@@ -504,7 +533,7 @@
 ├── uploads/         <span class="c1"># Cover buku</span>
 ├── bantuan.php
 └── index.php       <span class="c1"># Landing page katalog publik</span></pre>
-      <div class="note"><b>Catatan —</b> folder <code>siswa/admin/</code> yang sempat ada di project adalah duplikat tidak sengaja (bukan bagian aktif aplikasi) dan sudah/akan dihapus.</div>
+      <p>Setiap panel (<code>admin/</code>, <code>petugas/</code>, <code>siswa/</code>) memiliki file login dan logout tersendiri. Semua koneksi database dan pemeriksaan sesi login dipusatkan lewat <code>config/database.php</code> dan <code>includes/auth.php</code>, sehingga dipanggil oleh hampir seluruh halaman lewat <code>require_once</code>.</p>
     </section>
 
     <section id="database">
@@ -527,43 +556,100 @@
     <section id="keamanan">
       <div class="kicker">07 — Teknis</div>
       <h2>Keamanan</h2>
-      <div class="two-col">
-        <div class="stack">
-          <h4>Diterapkan</h4>
-          <ul>
-            <li>Prepared statement (PDO) di seluruh query</li>
-            <li>Password di-hash dengan bcrypt</li>
-            <li>Session terpisah per role (admin / siswa / petugas)</li>
-            <li>CSRF token pada aksi penting (hapus, login, transaksi)</li>
-          </ul>
-        </div>
-        <div class="stack">
-          <h4>Catatan</h4>
-          <ul>
-            <li>Kredensial database sebaiknya dipindahkan keluar dari source code (mis. lewat <code>.env</code>)</li>
-            <li>Jangan commit kredensial produksi ke repository publik</li>
-          </ul>
-        </div>
-      </div>
+      <p>Empat mekanisme keamanan diterapkan secara konsisten di seluruh aplikasi:</p>
+      <ul class="feature-list">
+        <li><span class="dot"></span><b>Prepared statement (PDO)</b> — seluruh query ke database menggunakan parameter terikat, mencegah SQL Injection.</li>
+        <li><span class="dot"></span><b>Password hashing (bcrypt)</b> — password admin, siswa, dan petugas disimpan dalam bentuk hash, tidak pernah dalam teks biasa.</li>
+        <li><span class="dot"></span><b>Session terpisah per role</b> — sesi login admin, siswa, dan petugas disimpan pada variabel session berbeda (<code>admin_id</code>, <code>anggota_id</code>, <code>petugas_id</code>) dan diverifikasi lewat fungsi <code>requireAdmin()</code>, <code>requireSiswa()</code>, <code>requirePetugas()</code> di <code>includes/auth.php</code>.</li>
+        <li><span class="dot"></span><b>Token CSRF</b> — dibuat per sesi dan diverifikasi pada setiap aksi yang mengubah data: hapus buku/anggota/transaksi, login, pendaftaran, proses peminjaman/pengembalian, dan pemberian rating.</li>
+      </ul>
     </section>
 
     <section id="instalasi">
       <div class="kicker">08 — Menjalankan</div>
       <h2>Instalasi</h2>
-      <pre>1. Extract project ke folder web server (mis. htdocs/)
-2. Buat database baru, lalu import db_perpustakaan.sql
-3. Sesuaikan config/database.php dengan kredensial database kamu
-4. Jalankan Apache & MySQL
-5. Buka http://localhost/&lt;nama-folder&gt;/index.php</pre>
-      <div class="note"><b>Env lokal —</b> gunakan konfigurasi berikut sebagai contoh, sesuaikan dengan environment kamu:</div>
-      <pre>DB_HOST=localhost
-DB_NAME=db_perpustakaan
-DB_USER=root
-DB_PASSWORD=</pre>
+      <pre>1. Extract project ke folder web server (mis. htdocs/ pada XAMPP)
+2. Buat database baru, misalnya db_perpustakaan
+3. Import file db_perpustakaan.sql ke database yang baru dibuat
+4. Buka config/database.php, lalu sesuaikan nilai berikut dengan environment kamu:
+
+   $DB_HOST = 'localhost';
+   $DB_NAME = 'db_perpustakaan';
+   $DB_USER = 'root';
+   $DB_PASS = '';
+
+5. Pastikan folder uploads/ dapat ditulis oleh web server
+6. Jalankan Apache & MySQL
+7. Buka http://localhost/&lt;nama-folder-project&gt;/index.php di browser</pre>
+    </section>
+
+    <section id="halaman">
+      <div class="kicker">09 — Lainnya</div>
+      <h2>Daftar Halaman</h2>
+      <p>Rincian setiap halaman berdasarkan nama file yang sebenarnya di dalam project, dikelompokkan per panel akses.</p>
+
+      <div class="two-col" style="grid-template-columns:1fr 1fr;">
+        <div class="stack">
+          <h4>Publik</h4>
+          <ul>
+            <li><code>index.php</code> — landing page katalog buku</li>
+            <li><code>bantuan.php</code> — halaman Bantuan</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <h4>Siswa (login siswa)</h4>
+          <ul>
+            <li><code>siswa/login.php</code>, <code>logout.php</code> — masuk & keluar</li>
+            <li><code>siswa/daftar.php</code> — pendaftaran anggota baru</li>
+            <li><code>siswa/dashboard.php</code> — dashboard siswa</li>
+            <li><code>siswa/pinjam.php</code> — katalog untuk dipinjam</li>
+            <li><code>siswa/pinjam_konfirmasi.php</code> — konfirmasi stok sebelum pinjam</li>
+            <li><code>siswa/proses_pinjam.php</code> — proses transaksi peminjaman</li>
+            <li><code>siswa/bukti_peminjaman.php</code> — bukti digital peminjaman</li>
+            <li><code>siswa/kembali.php</code> — daftar buku dipinjam & pengembalian</li>
+            <li><code>siswa/proses_kembali.php</code> — proses transaksi pengembalian & denda</li>
+            <li><code>siswa/proses_rating.php</code> — simpan rating & komentar</li>
+            <li><code>siswa/presensi.php</code> — presensi kunjungan baca di tempat</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <h4>Admin (login admin)</h4>
+          <ul>
+            <li><code>admin/login.php</code>, <code>logout.php</code> — masuk & keluar</li>
+            <li><code>admin/dashboard.php</code> — dashboard dengan grafik tren</li>
+            <li><code>admin/buku.php</code>, <code>tambah_buku.php</code>, <code>edit_buku.php</code>, <code>hapus_buku.php</code> — kelola data buku</li>
+            <li><code>admin/anggota.php</code>, <code>tambah_anggota.php</code>, <code>edit_anggota.php</code>, <code>hapus_anggota.php</code> — kelola data anggota</li>
+            <li><code>admin/transaksi.php</code>, <code>hapus_transaksi.php</code> — kelola & cetak laporan transaksi</li>
+            <li><code>admin/petugas.php</code> — kelola akun petugas</li>
+            <li><code>admin/kunjungan.php</code> — daftar kunjungan siswa</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <h4>Petugas (login petugas)</h4>
+          <ul>
+            <li><code>petugas/login.php</code>, <code>logout.php</code> — masuk & keluar</li>
+            <li><code>petugas/dashboard.php</code> — dashboard petugas</li>
+            <li><code>petugas/peminjaman.php</code>, <code>proses_pinjam.php</code> — input peminjaman untuk siswa</li>
+            <li><code>petugas/pengembalian.php</code>, <code>proses_kembali.php</code> — input pengembalian untuk siswa</li>
+            <li><code>petugas/data_buku.php</code> — lihat data buku</li>
+            <li><code>petugas/data_anggota.php</code> — lihat data anggota</li>
+            <li><code>petugas/buku_terlambat.php</code> — daftar buku terlambat</li>
+            <li><code>petugas/aktivitas.php</code> — riwayat aktivitas transaksi</li>
+            <li><code>petugas/profil.php</code> — profil akun petugas</li>
+          </ul>
+        </div>
+      </div>
+
+      <table>
+        <thead><tr><th>Method</th><th>Endpoint</th><th>Fungsi</th></tr></thead>
+        <tbody>
+          <tr><td>GET</td><td><code>api/notifications.php?action=get</code></td><td>Mengambil 20 notifikasi terbaru milik user yang sedang login (admin/siswa/petugas)</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section id="kontributor" style="border-bottom:none;">
-      <div class="kicker">09 — Lainnya</div>
+      <div class="kicker">10 — Lainnya</div>
       <h2>Kontributor & Lisensi</h2>
       <p>Belum ada identitas kontributor yang tercantum di project, dan belum ada file lisensi yang menyertai repository ini.</p>
     </section>
