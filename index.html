@@ -1,664 +1,508 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perpustakaan Digital Ilmu — Dokumentasi Proyek</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#F4EFE3;
-    --card:#FBF8F0;
-    --navy-950:#0B1524;
-    --navy-900:#0F1E33;
-    --navy-800:#17304D;
-    --ocean-500:#2E7CA6;
-    --ocean-400:#5AA9C9;
-    --gold-600:#A9791F;
-    --gold-500:#C9971F;
-    --ink-900:#141B26;
-    --ink-600:#4A5568;
-    --rule:#DAD2BC;
-    --rule-dark:#28405E;
-    --radius:10px;
-  }
+<div align="center">
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--cream);
-    color:var(--ink-900);
-    font-family:'Inter',sans-serif;
-    font-size:15.5px;
-    line-height:1.65;
-  }
-  h1,h2,h3,h4{
-    font-family:'Poppins',sans-serif;
-    margin:0 0 .5em 0;
-    color:var(--navy-950);
-  }
-  a{color:var(--ocean-500);}
-  code, pre, .mono{font-family:'JetBrains Mono',monospace;}
+📚 Perpustakaan Digital Ilmu
 
-  /* ---------- Layout shell ---------- */
-  .shell{
-    display:grid;
-    grid-template-columns:260px 1fr;
-    min-height:100vh;
-  }
-  @media (max-width:880px){
-    .shell{grid-template-columns:1fr;}
-    .catalog{display:none;}
-    .catalog.open{display:block;position:fixed;inset:0;z-index:50;overflow-y:auto;}
-  }
+Sistem Informasi Perpustakaan Sekolah Berbasis Web
 
-  /* ---------- Sidebar: "card catalog" drawers ---------- */
-  .catalog{
-    background:var(--navy-950);
-    color:#CBD8E6;
-    padding:28px 0 40px;
-    position:sticky;
-    top:0;
-    height:100vh;
-    overflow-y:auto;
-    border-right:1px solid var(--rule-dark);
-  }
-  .catalog-brand{
-    padding:0 24px 22px;
-    border-bottom:1px solid var(--rule-dark);
-    margin-bottom:6px;
-  }
-  .catalog-brand .mark{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:34px;height:34px;
-    border:1.5px solid var(--gold-500);
-    color:var(--gold-500);
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    font-weight:600;
-    border-radius:3px;
-    margin-bottom:10px;
-  }
-  .catalog-brand h1{
-    font-size:16px;
-    color:#F3EFE3;
-    line-height:1.3;
-    margin:0 0 4px;
-  }
-  .catalog-brand p{
-    margin:0;
-    font-size:12px;
-    color:#7E93AC;
-  }
+<p>
+  <strong>PHP Native</strong> ·
+  <strong>MariaDB / MySQL</strong> ·
+  <strong>PDO</strong> ·
+  <strong>Tailwind CSS</strong> ·
+  <strong>Chart.js</strong>
+</p>
 
-  .drawer-group{padding:18px 0 4px;}
-  .drawer-label{
-    font-family:'JetBrains Mono',monospace;
-    font-size:10.5px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:#5F7590;
-    padding:0 24px 8px;
-  }
-  .drawer-group a{
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-    padding:7px 24px;
-    color:#B9C7D6;
-    text-decoration:none;
-    font-size:13.5px;
-    border-left:2px solid transparent;
-    transition:background .15s, color .15s, border-color .15s;
-  }
-  .drawer-group a .tab-no{
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    color:#496179;
-  }
-  .drawer-group a:hover{
-    background:rgba(90,169,201,0.08);
-    color:#EAF1F7;
-    border-left-color:var(--ocean-400);
-  }
+<p>
+  <a href="#tentang-project">Tentang</a> ·
+  <a href="#fitur-utama">Fitur</a> ·
+  <a href="#teknologi">Teknologi</a> ·
+  <a href="#dokumentasi-visual">Dokumentasi Visual</a> ·
+  <a href="#instalasi">Instalasi</a>
+</p>
 
-  /* ---------- Mobile toggle ---------- */
-  .mobile-bar{
-    display:none;
-    position:sticky; top:0; z-index:40;
-    background:var(--navy-950);
-    color:#EAF1F7;
-    padding:14px 18px;
-    align-items:center;
-    justify-content:space-between;
-    font-family:'Poppins',sans-serif;
-    font-weight:700;
-    font-size:14px;
-    border-bottom:1px solid var(--rule-dark);
-  }
-  .mobile-bar button{
-    background:none;border:1px solid var(--rule-dark);color:#EAF1F7;
-    border-radius:6px;padding:6px 10px;font-size:13px;cursor:pointer;
-  }
-  @media (max-width:880px){ .mobile-bar{display:flex;} }
-
-  /* ---------- Main content ---------- */
-  main{padding:0;}
-  .hero{
-    background:
-      radial-gradient(ellipse 700px 380px at 82% -10%, rgba(90,169,201,.22), transparent 60%),
-      var(--navy-950);
-    color:#EAF1F7;
-    padding:72px 64px 64px;
-    position:relative;
-    border-bottom:6px solid var(--gold-500);
-  }
-  @media (max-width:640px){ .hero{padding:48px 24px;} }
-
-  .hero .eyebrow{
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--gold-500);
-    margin-bottom:18px;
-  }
-  .hero h2{
-    color:#FBF8F0;
-    font-size:clamp(30px,4.2vw,46px);
-    line-height:1.12;
-    max-width:720px;
-    margin-bottom:16px;
-  }
-  .hero .sub{
-    color:#AEC3D6;
-    max-width:600px;
-    font-size:16px;
-    margin-bottom:30px;
-  }
-  .hero .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
-  .badge{
-    font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;
-    padding:5px 11px;
-    border:1px solid var(--rule-dark);
-    border-radius:20px;
-    color:#B9C7D6;
-    background:rgba(255,255,255,.02);
-  }
-
-  .hero-links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px;}
-  .hero-link{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:13px;
-    font-weight:600;
-    text-decoration:none;
-    padding:10px 18px;
-    border-radius:6px;
-    transition:opacity .15s;
-  }
-  .hero-link:hover{opacity:.85;}
-  .hero-link.primary{background:var(--gold-500);color:var(--navy-950);}
-  .hero-link.secondary{border:1px solid var(--rule-dark);color:#EAF1F7;}
-
-  /* due-date stamp card, signature element */
-  .stamp-card{
-    background:var(--card);
-    color:var(--ink-900);
-    max-width:420px;
-    border-radius:6px;
-    box-shadow:0 20px 40px -18px rgba(0,0,0,.55);
-    border:1px solid #E4DCC4;
-    overflow:hidden;
-  }
-  .stamp-card .top{
-    background:var(--gold-500);
-    color:var(--navy-950);
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    padding:8px 16px;
-    display:flex;justify-content:space-between;
-  }
-  .stamp-card .rows{padding:14px 16px 16px;}
-  .stamp-row{
-    display:grid;
-    grid-template-columns:96px 1fr 1fr;
-    gap:8px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;
-    padding:6px 0;
-    border-bottom:1px dashed #D8CDA8;
-    color:var(--ink-600);
-  }
-  .stamp-row:last-child{border-bottom:none;}
-  .stamp-row b{color:var(--navy-950);}
-
-  section{
-    padding:56px 64px;
-    border-bottom:1px solid var(--rule);
-    max-width:980px;
-  }
-  @media (max-width:640px){ section{padding:40px 24px;} }
-
-  .kicker{
-    font-family:'JetBrains Mono',monospace;
-    font-size:11.5px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--gold-600);
-    margin-bottom:10px;
-    display:flex;align-items:center;gap:8px;
-  }
-  .kicker::before{
-    content:"";
-    width:22px;height:1px;background:var(--gold-600);
-    display:inline-block;
-  }
-  section h2{font-size:26px;margin-bottom:18px;}
-  section p{color:var(--ink-600);max-width:70ch;}
-
-  .role-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-    gap:14px;
-    margin-top:22px;
-  }
-  .role-card{
-    background:var(--card);
-    border:1px solid var(--rule);
-    border-radius:var(--radius);
-    padding:18px 18px 16px;
-  }
-  .role-card .idx{
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    color:var(--gold-600);
-    margin-bottom:8px;
-  }
-  .role-card h4{font-size:15px;margin-bottom:6px;}
-  .role-card p{font-size:13.5px;margin:0;color:var(--ink-600);}
-
-  .feature-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;}
-  .feature-list li{
-    display:flex;gap:12px;align-items:flex-start;
-    padding:12px 16px;
-    background:var(--card);
-    border:1px solid var(--rule);
-    border-radius:8px;
-    font-size:14px;
-  }
-  .feature-list li .dot{
-    width:6px;height:6px;border-radius:50%;
-    background:var(--ocean-500);
-    margin-top:7px;flex-shrink:0;
-  }
-
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:18px;
-    font-size:13.5px;
-    background:var(--card);
-    border:1px solid var(--rule);
-    border-radius:var(--radius);
-    overflow:hidden;
-  }
-  th,td{
-    text-align:left;
-    padding:10px 14px;
-    border-bottom:1px solid var(--rule);
-  }
-  th{
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    color:var(--gold-600);
-    background:#EFE8D4;
-  }
-  tr:last-child td{border-bottom:none;}
-  td code{background:#EFE8D4;padding:1px 6px;border-radius:4px;font-size:12px;}
-
-  pre{
-    background:var(--navy-950);
-    color:#D7E4EE;
-    padding:20px 22px;
-    border-radius:8px;
-    overflow-x:auto;
-    font-size:12.8px;
-    line-height:1.6;
-    margin-top:18px;
-    border:1px solid var(--rule-dark);
-  }
-  pre .c1{color:#7E93AC;}
-  pre .fold{color:var(--gold-500);}
-
-  .note{
-    margin-top:18px;
-    border-left:3px solid var(--gold-500);
-    background:#EFE8D4;
-    padding:12px 16px;
-    border-radius:0 8px 8px 0;
-    font-size:13.5px;
-    color:var(--ink-900);
-  }
-  .note b{color:var(--navy-950);}
-
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
-  @media (max-width:700px){ .two-col{grid-template-columns:1fr;} }
-
-  .stack{
-    background:var(--card);
-    border:1px solid var(--rule);
-    border-radius:var(--radius);
-    padding:16px 18px;
-  }
-  .stack h4{font-size:13.5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-600);margin-bottom:10px;}
-  .stack ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-600);}
-  .stack li{margin-bottom:4px;}
-
-  footer{
-    padding:40px 64px 60px;
-    color:#7E93AC;
-    background:var(--navy-950);
-    font-size:12.5px;
-  }
-  footer a{color:var(--ocean-400);}
-  @media (max-width:640px){ footer{padding:32px 24px 48px;} }
-</style>
-</head>
-<body>
-
-<div class="mobile-bar">
-  <span>📚 Perpustakaan Digital Ilmu</span>
-  <button onclick="document.querySelector('.catalog').classList.toggle('open')">Daftar Isi</button>
 </div>
 
-<div class="shell">
-  <nav class="catalog">
-    <div class="catalog-brand">
-      <span class="mark">PDI</span>
-      <h1>Perpustakaan<br>Digital Ilmu</h1>
-      <p>Dokumentasi proyek UKK RPL</p>
-    </div>
+📖 Tentang Project
 
-    <div class="drawer-group">
-      <div class="drawer-label">Ringkasan</div>
-      <a href="#tentang"><span class="tab-no">01</span>Tentang Project</a>
-      <a href="#fitur"><span class="tab-no">02</span>Fitur Utama</a>
-      <a href="#peran"><span class="tab-no">03</span>Peran Pengguna</a>
-    </div>
+Perpustakaan Digital Ilmu adalah aplikasi web untuk membantu pengelolaan perpustakaan sekolah secara digital.
 
-    <div class="drawer-group">
-      <div class="drawer-label">Teknis</div>
-      <a href="#teknologi"><span class="tab-no">04</span>Teknologi</a>
-      <a href="#struktur"><span class="tab-no">05</span>Struktur Folder</a>
-      <a href="#database"><span class="tab-no">06</span>Struktur Database</a>
-      <a href="#keamanan"><span class="tab-no">07</span>Keamanan</a>
-    </div>
+Sistem mencakup katalog buku, data anggota, peminjaman, pengembalian, presensi kunjungan, rating dan komentar buku, notifikasi, serta pengelolaan data melalui akun Admin dan Petugas.
 
-    <div class="drawer-group">
-      <div class="drawer-label">Menjalankan</div>
-      <a href="#instalasi"><span class="tab-no">08</span>Instalasi</a>
-    </div>
+Project menggunakan PHP Native sebagai backend dan MariaDB/MySQL sebagai database dengan PDO untuk koneksi dan query database.
 
-    <div class="drawer-group">
-      <div class="drawer-label">Lainnya</div>
-      <a href="#halaman"><span class="tab-no">09</span>Daftar Halaman</a>
-      <a href="#kontributor"><span class="tab-no">10</span>Kontributor & Lisensi</a>
-    </div>
+✨ Fitur Utama
 
-    <div class="drawer-group">
-      <div class="drawer-label">Referensi</div>
-      <a href="README.md">📄 README.md</a>
-      <a href="https://github.com/Annajwaannuryaqni/Perpustakaan_digital_ilmu" target="_blank" rel="noopener">↗ Repository GitHub</a>
-    </div>
-  </nav>
+<table>
+<tr>
+<td width="50%" valign="top">
 
-  <main>
-    <div class="hero">
-      <div class="eyebrow">Dokumentasi Proyek · UKK RPL 2025/2026</div>
-      <h2>Sistem sirkulasi buku perpustakaan sekolah, dari katalog sampai denda keterlambatan.</h2>
-      <p class="sub">Aplikasi web dibangun dengan PHP native + MySQL untuk mengelola koleksi buku, keanggotaan siswa, dan seluruh proses peminjaman–pengembalian secara digital.</p>
-      <div class="badges">
-        <span class="badge">PHP native</span>
-        <span class="badge">MySQL / MariaDB</span>
-        <span class="badge">PDO Prepared Statement</span>
-        <span class="badge">Tailwind CSS</span>
-        <span class="badge">Chart.js</span>
-      </div>
+👤 Pengunjung
 
-      <div class="hero-links">
-        <a class="hero-link primary" href="README.md">📄 Baca README.md</a>
-        <a class="hero-link secondary" href="https://github.com/Annajwaannuryaqni/Perpustakaan_digital_ilmu" target="_blank" rel="noopener">↗ Buka Repository di GitHub</a>
-      </div>
+Melihat halaman utama dan katalog.
 
-      <div class="stamp-card">
-        <div class="top"><span>Kartu Peminjaman</span><span>No. 001</span></div>
-        <div class="rows">
-          <div class="stamp-row"><span>Judul</span><b>Perpustakaan Digital Ilmu</b><span></span></div>
-          <div class="stamp-row"><span>Jenis</span><span>Aplikasi Web</span><span></span></div>
-          <div class="stamp-row"><span>Status</span><b>Dipinjam — Aktif</b><span></span></div>
-          <div class="stamp-row"><span>Peran</span><span>Admin · Petugas · Siswa</span><span></span></div>
-        </div>
-      </div>
-    </div>
+Melihat kategori dan detail buku.
 
-    <section id="tentang">
-      <div class="kicker">01 — Ringkasan</div>
-      <h2>Tentang Project</h2>
-      <p>Aplikasi manajemen perpustakaan sekolah berbasis web, dibangun dengan PHP native + MySQL. Digunakan untuk mengelola koleksi buku, pendaftaran anggota (siswa), serta proses peminjaman dan pengembalian buku secara digital — lengkap dengan denda keterlambatan otomatis serta rating & ulasan buku.</p>
-      <p>Proyek ini dikerjakan sebagai tugas UKK (Uji Kompetensi Keahlian) SMK Konsentrasi Rekayasa Perangkat Lunak, "Pengembangan Aplikasi Peminjaman Buku".</p>
-    </section>
+Melihat rating dan komentar.
 
-    <section id="fitur">
-      <div class="kicker">02 — Ringkasan</div>
-      <h2>Fitur Utama</h2>
-      <ul class="feature-list">
-        <li><span class="dot"></span>Katalog buku publik dengan kategori & grafik statistik, dapat diakses tanpa login</li>
-        <li><span class="dot"></span>Peminjaman buku: pilih buku → konfirmasi stok → bukti peminjaman digital</li>
-        <li><span class="dot"></span>Pengembalian buku dengan perhitungan denda keterlambatan otomatis</li>
-        <li><span class="dot"></span>Rating & komentar buku, dapat diisi setelah buku dikembalikan</li>
-        <li><span class="dot"></span>Presensi kunjungan untuk siswa yang membaca di tempat tanpa meminjam</li>
-        <li><span class="dot"></span>Notifikasi in-app untuk admin, siswa, dan petugas</li>
-        <li><span class="dot"></span>CRUD buku, anggota, dan transaksi, lengkap dengan cetak laporan (panel admin)</li>
-      </ul>
-    </section>
+Mengakses halaman bantuan.
 
-    <section id="peran">
-      <div class="kicker">03 — Ringkasan</div>
-      <h2>Peran Pengguna</h2>
-      <p>Sistem melayani empat jenis pengguna dengan hak akses berbeda. Admin, Siswa, dan Petugas masing-masing memiliki formulir login terpisah dan sesi yang tidak saling tertukar.</p>
-      <div class="role-grid">
-        <div class="role-card">
-          <div class="idx">Tanpa Login</div>
-          <h4>Pengunjung</h4>
-          <p>Mengakses landing page (<code>index.php</code>) dan halaman Bantuan. Dapat melihat katalog buku per kategori, membuka detail buku, serta membaca rating dan ulasan yang sudah ada. Tidak dapat meminjam buku tanpa mendaftar terlebih dahulu.</p>
-        </div>
-        <div class="role-card">
-          <div class="idx">siswa/login.php</div>
-          <h4>Siswa / Anggota</h4>
-          <p>Mendaftar mandiri, login ke dashboard pribadi, meminjam buku lewat alur konfirmasi bertahap, mengembalikan buku, memberi rating dan komentar setelah pengembalian, serta mencatat presensi saat membaca di tempat tanpa meminjam.</p>
-        </div>
-        <div class="role-card">
-          <div class="idx">admin/login.php</div>
-          <h4>Admin</h4>
-          <p>Mengelola seluruh data master: tambah/ubah/hapus data buku dan anggota, memantau dan mencetak laporan seluruh transaksi, mengelola akun Petugas, serta melihat log kunjungan siswa.</p>
-        </div>
-        <div class="role-card">
-          <div class="idx">petugas/login.php</div>
-          <h4>Petugas</h4>
-          <p>Mencatat transaksi peminjaman dan pengembalian atas nama siswa secara langsung di meja sirkulasi, melihat data buku dan anggota, memantau daftar buku yang terlambat dikembalikan, serta melihat riwayat aktivitas transaksi yang telah diprosesnya.</p>
-        </div>
-      </div>
-    </section>
+🎓 Siswa / Anggota
 
-    <section id="teknologi">
-      <div class="kicker">04 — Teknis</div>
-      <h2>Teknologi yang Digunakan</h2>
-      <table>
-        <thead><tr><th>Teknologi</th><th>Fungsi</th></tr></thead>
-        <tbody>
-          <tr><td>PHP (native)</td><td>Backend, tanpa framework</td></tr>
-          <tr><td>MySQL / MariaDB</td><td>Database</td></tr>
-          <tr><td>PDO</td><td>Akses database dengan prepared statement</td></tr>
-          <tr><td>Tailwind CSS (CDN)</td><td>Styling halaman publik</td></tr>
-          <tr><td>Chart.js (CDN)</td><td>Grafik statistik koleksi</td></tr>
-          <tr><td>JavaScript (vanilla)</td><td>Interaksi UI & notifikasi</td></tr>
-        </tbody>
-      </table>
-    </section>
+Registrasi dan login.
 
-    <section id="struktur">
-      <div class="kicker">05 — Teknis</div>
-      <h2>Struktur Folder</h2>
-      <pre><span class="c1">project/</span>
-├── admin/          <span class="c1"># Panel Admin — kelola buku, anggota, transaksi, petugas</span>
-├── petugas/        <span class="c1"># Panel Petugas — input peminjaman/pengembalian</span>
-├── siswa/          <span class="c1"># Area Siswa — pinjam, kembalikan, rating, presensi</span>
-├── api/            <span class="c1"># Endpoint notifikasi</span>
-├── config/         <span class="c1"># Koneksi database & konstanta</span>
-├── includes/       <span class="c1"># Auth, CSRF, sidebar, notifikasi</span>
-├── assets/         <span class="c1"># CSS, JS, gambar, suara</span>
-├── uploads/         <span class="c1"># Cover buku</span>
+Melihat dashboard.
+
+Meminjam dan mengembalikan buku.
+
+Melihat bukti peminjaman.
+
+Mendapatkan perhitungan denda.
+
+Memberikan rating dan komentar.
+
+Melakukan presensi.
+
+Menerima notifikasi.
+
+</td>
+<td width="50%" valign="top">
+
+🛠️ Petugas
+
+Login dan logout.
+
+Melihat dashboard.
+
+Memproses peminjaman dan pengembalian.
+
+Melihat data buku dan anggota.
+
+Melihat buku terlambat.
+
+Melihat aktivitas transaksi.
+
+Mengelola profil.
+
+👑 Admin
+
+Melihat dashboard dan statistik.
+
+CRUD data buku.
+
+CRUD data anggota.
+
+Mengelola transaksi.
+
+Mengelola akun petugas.
+
+Melihat data kunjungan.
+
+Mencetak laporan transaksi.
+
+</td>
+</tr>
+</table>
+
+👥 Peran Pengguna
+
+<table>
+<thead>
+<tr>
+<th>Peran</th>
+<th>Akses Utama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pengunjung</strong></td>
+<td>Katalog dan informasi publik</td>
+</tr>
+<tr>
+<td><strong>Siswa</strong></td>
+<td>Peminjaman, pengembalian, rating, komentar, presensi, dan notifikasi</td>
+</tr>
+<tr>
+<td><strong>Petugas</strong></td>
+<td>Operasional peminjaman dan pengembalian</td>
+</tr>
+<tr>
+<td><strong>Admin</strong></td>
+<td>Pengelolaan data dan administrasi sistem</td>
+</tr>
+</tbody>
+</table>
+
+🧰 Teknologi
+
+<table>
+<thead>
+<tr>
+<th>Teknologi</th>
+<th>Penggunaan</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>PHP Native</strong></td><td>Backend dan logika aplikasi</td></tr>
+<tr><td><strong>MariaDB / MySQL</strong></td><td>Penyimpanan data</td></tr>
+<tr><td><strong>PDO</strong></td><td>Koneksi database dan prepared statement</td></tr>
+<tr><td><strong>Tailwind CSS</strong></td><td>Styling antarmuka</td></tr>
+<tr><td><strong>JavaScript Vanilla</strong></td><td>Interaksi halaman dan notifikasi</td></tr>
+<tr><td><strong>Chart.js 4</strong></td><td>Grafik statistik dashboard</td></tr>
+<tr><td><strong>HTML5 & CSS</strong></td><td>Struktur dan styling halaman</td></tr>
+<tr><td><strong>XAMPP / Web Server PHP</strong></td><td>Lingkungan pengembangan lokal</td></tr>
+</tbody>
+</table>
+
+🎨 Dokumentasi Visual
+
+Dokumentasi visual dibuat sebagai file terpisah agar README tetap ringkas dan mudah dibaca.
+
+<table>
+<tr>
+<td align="center" width="50%">
+
+🖼️ Mockup UI
+
+<a href="docs/mockup-ui.png">
+<img src="docs/mockup-ui.png" alt="Mockup UI" width="90%">
+</a>
+
+</td>
+<td align="center" width="50%">
+
+👥 Use Case Diagram
+
+<a href="docs/use-case-diagram.png">
+<img src="docs/use-case-diagram.png" alt="Use Case Diagram" width="90%">
+</a>
+
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+
+🔄 Flowchart
+
+<a href="docs/flowchart.png">
+<img src="docs/flowchart.png" alt="Flowchart" width="90%">
+</a>
+
+</td>
+<td align="center" width="50%">
+
+🗄️ ERD
+
+<a href="docs/erd.png">
+<img src="docs/erd.png" alt="Entity Relationship Diagram" width="90%">
+</a>
+
+</td>
+</tr>
+</table>
+
+Catatan: File gambar di atas dapat ditempatkan di folder docs/ pada repository.
+
+📁 Struktur Folder
+
+Perpustakaan Digital Ilmu/
+├── admin/
+├── api/
+├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── sounds/
+│   └── video/
+├── config/
+├── includes/
+├── petugas/
+├── siswa/
+├── uploads/
 ├── bantuan.php
-└── index.php       <span class="c1"># Landing page katalog publik</span></pre>
-      <p>Setiap panel (<code>admin/</code>, <code>petugas/</code>, <code>siswa/</code>) memiliki file login dan logout tersendiri. Semua koneksi database dan pemeriksaan sesi login dipusatkan lewat <code>config/database.php</code> dan <code>includes/auth.php</code>, sehingga dipanggil oleh hampir seluruh halaman lewat <code>require_once</code>.</p>
-    </section>
+├── index.php
+└── db_perpustakaan.sql
 
-    <section id="database">
-      <div class="kicker">06 — Teknis</div>
-      <h2>Struktur Database</h2>
-      <p>10 tabel: <code>admin</code>, <code>anggota</code>, <code>buku</code>, <code>kategori</code>, <code>komentar</code>, <code>kunjungan</code>, <code>notifications</code>, <code>petugas</code>, <code>rating</code>, <code>transaksi</code>.</p>
-      <table>
-        <thead><tr><th>Relasi</th><th>Keterangan</th></tr></thead>
-        <tbody>
-          <tr><td><code>buku.id_kategori</code> → <code>kategori.id_kategori</code></td><td>Satu kategori memiliki banyak buku</td></tr>
-          <tr><td><code>transaksi.id_anggota</code> → <code>anggota.id_anggota</code></td><td>Satu anggota memiliki banyak transaksi</td></tr>
-          <tr><td><code>transaksi.id_buku</code> → <code>buku.id_buku</code></td><td>Satu buku muncul di banyak transaksi</td></tr>
-          <tr><td><code>transaksi.id_petugas</code> → <code>petugas.id_petugas</code></td><td>Petugas yang memproses transaksi, bersifat opsional</td></tr>
-          <tr><td><code>rating</code>, <code>komentar</code> → <code>buku</code>, <code>anggota</code>, <code>transaksi</code></td><td>Terikat pada transaksi peminjaman — satu rating per transaksi</td></tr>
-          <tr><td><code>kunjungan.id_anggota</code> → <code>anggota.id_anggota</code></td><td>Log presensi kunjungan siswa</td></tr>
-        </tbody>
-      </table>
-    </section>
+Folder Utama
 
-    <section id="keamanan">
-      <div class="kicker">07 — Teknis</div>
-      <h2>Keamanan</h2>
-      <p>Empat mekanisme keamanan diterapkan secara konsisten di seluruh aplikasi:</p>
-      <ul class="feature-list">
-        <li><span class="dot"></span><b>Prepared statement (PDO)</b> — seluruh query ke database menggunakan parameter terikat, mencegah SQL Injection.</li>
-        <li><span class="dot"></span><b>Password hashing (bcrypt)</b> — password admin, siswa, dan petugas disimpan dalam bentuk hash, tidak pernah dalam teks biasa.</li>
-        <li><span class="dot"></span><b>Session terpisah per role</b> — sesi login admin, siswa, dan petugas disimpan pada variabel session berbeda (<code>admin_id</code>, <code>anggota_id</code>, <code>petugas_id</code>) dan diverifikasi lewat fungsi <code>requireAdmin()</code>, <code>requireSiswa()</code>, <code>requirePetugas()</code> di <code>includes/auth.php</code>.</li>
-        <li><span class="dot"></span><b>Token CSRF</b> — dibuat per sesi dan diverifikasi pada setiap aksi yang mengubah data: hapus buku/anggota/transaksi, login, pendaftaran, proses peminjaman/pengembalian, dan pemberian rating.</li>
-      </ul>
-    </section>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><code>admin/</code></td><td>Halaman dan proses administrasi</td></tr>
+<tr><td><code>api/</code></td><td>Endpoint API aplikasi</td></tr>
+<tr><td><code>assets/</code></td><td>CSS, JavaScript, gambar, audio, dan video</td></tr>
+<tr><td><code>config/</code></td><td>Konfigurasi database dan konstanta</td></tr>
+<tr><td><code>includes/</code></td><td>Autentikasi, sidebar, dan helper</td></tr>
+<tr><td><code>petugas/</code></td><td>Halaman dan proses untuk Petugas</td></tr>
+<tr><td><code>siswa/</code></td><td>Halaman dan proses untuk Siswa</td></tr>
+<tr><td><code>uploads/</code></td><td>File cover buku</td></tr>
+</tbody>
+</table>
 
-    <section id="instalasi">
-      <div class="kicker">08 — Menjalankan</div>
-      <h2>Instalasi</h2>
-      <pre>1. Extract project ke folder web server (mis. htdocs/ pada XAMPP)
-2. Buat database baru, misalnya db_perpustakaan
-3. Import file db_perpustakaan.sql ke database yang baru dibuat
-4. Buka config/database.php, lalu sesuaikan nilai berikut dengan environment kamu:
+🗃️ Database
 
-   $DB_HOST = 'localhost';
-   $DB_NAME = 'db_perpustakaan';
-   $DB_USER = 'root';
-   $DB_PASS = '';
+Database project menggunakan db_perpustakaan dan terdiri dari 10 tabel utama:
 
-5. Pastikan folder uploads/ dapat ditulis oleh web server
-6. Jalankan Apache & MySQL
-7. Buka http://localhost/&lt;nama-folder-project&gt;/index.php di browser</pre>
-    </section>
+<table>
+<thead>
+<tr>
+<th>Tabel</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><code>admin</code></td><td>Data akun Admin</td></tr>
+<tr><td><code>anggota</code></td><td>Data anggota / siswa</td></tr>
+<tr><td><code>buku</code></td><td>Data koleksi buku</td></tr>
+<tr><td><code>kategori</code></td><td>Kategori buku</td></tr>
+<tr><td><code>komentar</code></td><td>Komentar buku</td></tr>
+<tr><td><code>kunjungan</code></td><td>Data presensi kunjungan</td></tr>
+<tr><td><code>notifications</code></td><td>Notifikasi pengguna</td></tr>
+<tr><td><code>petugas</code></td><td>Data akun Petugas</td></tr>
+<tr><td><code>rating</code></td><td>Rating buku</td></tr>
+<tr><td><code>transaksi</code></td><td>Data peminjaman dan pengembalian</td></tr>
+</tbody>
+</table>
 
-    <section id="halaman">
-      <div class="kicker">09 — Lainnya</div>
-      <h2>Daftar Halaman</h2>
-      <p>Rincian setiap halaman berdasarkan nama file yang sebenarnya di dalam project, dikelompokkan per panel akses.</p>
+🔗 Relasi Utama
 
-      <div class="two-col" style="grid-template-columns:1fr 1fr;">
-        <div class="stack">
-          <h4>Publik</h4>
-          <ul>
-            <li><code>index.php</code> — landing page katalog buku</li>
-            <li><code>bantuan.php</code> — halaman Bantuan</li>
-          </ul>
-        </div>
-        <div class="stack">
-          <h4>Siswa (login siswa)</h4>
-          <ul>
-            <li><code>siswa/login.php</code>, <code>logout.php</code> — masuk & keluar</li>
-            <li><code>siswa/daftar.php</code> — pendaftaran anggota baru</li>
-            <li><code>siswa/dashboard.php</code> — dashboard siswa</li>
-            <li><code>siswa/pinjam.php</code> — katalog untuk dipinjam</li>
-            <li><code>siswa/pinjam_konfirmasi.php</code> — konfirmasi stok sebelum pinjam</li>
-            <li><code>siswa/proses_pinjam.php</code> — proses transaksi peminjaman</li>
-            <li><code>siswa/bukti_peminjaman.php</code> — bukti digital peminjaman</li>
-            <li><code>siswa/kembali.php</code> — daftar buku dipinjam & pengembalian</li>
-            <li><code>siswa/proses_kembali.php</code> — proses transaksi pengembalian & denda</li>
-            <li><code>siswa/proses_rating.php</code> — simpan rating & komentar</li>
-            <li><code>siswa/presensi.php</code> — presensi kunjungan baca di tempat</li>
-          </ul>
-        </div>
-        <div class="stack">
-          <h4>Admin (login admin)</h4>
-          <ul>
-            <li><code>admin/login.php</code>, <code>logout.php</code> — masuk & keluar</li>
-            <li><code>admin/dashboard.php</code> — dashboard dengan grafik tren</li>
-            <li><code>admin/buku.php</code>, <code>tambah_buku.php</code>, <code>edit_buku.php</code>, <code>hapus_buku.php</code> — kelola data buku</li>
-            <li><code>admin/anggota.php</code>, <code>tambah_anggota.php</code>, <code>edit_anggota.php</code>, <code>hapus_anggota.php</code> — kelola data anggota</li>
-            <li><code>admin/transaksi.php</code>, <code>hapus_transaksi.php</code> — kelola & cetak laporan transaksi</li>
-            <li><code>admin/petugas.php</code> — kelola akun petugas</li>
-            <li><code>admin/kunjungan.php</code> — daftar kunjungan siswa</li>
-          </ul>
-        </div>
-        <div class="stack">
-          <h4>Petugas (login petugas)</h4>
-          <ul>
-            <li><code>petugas/login.php</code>, <code>logout.php</code> — masuk & keluar</li>
-            <li><code>petugas/dashboard.php</code> — dashboard petugas</li>
-            <li><code>petugas/peminjaman.php</code>, <code>proses_pinjam.php</code> — input peminjaman untuk siswa</li>
-            <li><code>petugas/pengembalian.php</code>, <code>proses_kembali.php</code> — input pengembalian untuk siswa</li>
-            <li><code>petugas/data_buku.php</code> — lihat data buku</li>
-            <li><code>petugas/data_anggota.php</code> — lihat data anggota</li>
-            <li><code>petugas/buku_terlambat.php</code> — daftar buku terlambat</li>
-            <li><code>petugas/aktivitas.php</code> — riwayat aktivitas transaksi</li>
-            <li><code>petugas/profil.php</code> — profil akun petugas</li>
-          </ul>
-        </div>
-      </div>
+buku.id_kategori → kategori.id_kategori
 
-      <table>
-        <thead><tr><th>Method</th><th>Endpoint</th><th>Fungsi</th></tr></thead>
-        <tbody>
-          <tr><td>GET</td><td><code>api/notifications.php?action=get</code></td><td>Mengambil 20 notifikasi terbaru milik user yang sedang login (admin/siswa/petugas)</td></tr>
-        </tbody>
-      </table>
-    </section>
+transaksi.id_anggota → anggota.id_anggota
 
-    <section id="kontributor" style="border-bottom:none;">
-      <div class="kicker">10 — Lainnya</div>
-      <h2>Kontributor & Lisensi</h2>
-      <p>Belum ada identitas kontributor yang tercantum di project, dan belum ada file lisensi yang menyertai repository ini.</p>
-    </section>
+transaksi.id_petugas → petugas.id_petugas
 
-    <footer>
-      Perpustakaan Digital Ilmu — Dokumentasi proyek UKK RPL · dibuat dari README.md project.
-    </footer>
-  </main>
+transaksi.id_buku → buku.id_buku
+
+rating → buku, anggota, dan transaksi
+
+komentar → buku, anggota, dan transaksi
+
+kunjungan.id_anggota → anggota.id_anggota
+
+Detail hubungan antar-entitas tersedia pada ERD.
+
+🔐 Keamanan
+
+Project menerapkan beberapa mekanisme keamanan:
+
+PDO Prepared Statement untuk query database.
+
+Password Hashing menggunakan password_hash() dan password_verify().
+
+Session & Role Protection melalui includes/auth.php.
+
+CSRF Protection pada request yang mengubah data.
+
+Database Transaction pada proses peminjaman.
+
+Penguncian data buku menggunakan FOR UPDATE pada proses peminjaman.
+
+Jangan menyimpan password database production secara langsung di repository publik.
+
+📄 Halaman Utama
+
+Publik
+
+File
+
+Fungsi
+
+index.php
+
+Halaman utama dan katalog
+
+bantuan.php
+
+Halaman bantuan
+
+Siswa
+
+File
+
+Fungsi
+
+siswa/daftar.php
+
+Registrasi
+
+siswa/login.php
+
+Login
+
+siswa/dashboard.php
+
+Dashboard
+
+siswa/pinjam.php
+
+Katalog peminjaman
+
+siswa/pinjam_konfirmasi.php
+
+Konfirmasi peminjaman
+
+siswa/bukti_peminjaman.php
+
+Bukti peminjaman
+
+siswa/kembali.php
+
+Pengembalian
+
+siswa/proses_rating.php
+
+Rating dan komentar
+
+siswa/presensi.php
+
+Presensi
+
+Petugas
+
+File
+
+Fungsi
+
+petugas/dashboard.php
+
+Dashboard
+
+petugas/peminjaman.php
+
+Peminjaman
+
+petugas/pengembalian.php
+
+Pengembalian
+
+petugas/data_buku.php
+
+Data buku
+
+petugas/data_anggota.php
+
+Data anggota
+
+petugas/buku_terlambat.php
+
+Buku terlambat
+
+petugas/aktivitas.php
+
+Aktivitas transaksi
+
+petugas/profil.php
+
+Profil
+
+Admin
+
+File
+
+Fungsi
+
+admin/dashboard.php
+
+Dashboard statistik
+
+admin/buku.php
+
+Data buku
+
+admin/anggota.php
+
+Data anggota
+
+admin/transaksi.php
+
+Data transaksi
+
+admin/petugas.php
+
+Kelola Petugas
+
+admin/kunjungan.php
+
+Data kunjungan
+
+🔔 API Notifikasi
+
+Sistem memiliki endpoint notifikasi:
+
+Method
+
+Endpoint
+
+Fungsi
+
+GET
+
+api/notifications.php?action=get
+
+Mengambil notifikasi terbaru
+
+⚙️ Instalasi
+
+1. Persyaratan
+
+PHP
+
+MariaDB / MySQL
+
+Apache atau web server PHP
+
+Browser modern
+
+XAMPP atau Laragon untuk pengembangan lokal
+
+2. Letakkan Project
+
+Contoh menggunakan XAMPP:
+
+C:\xampp\htdocs\Perpustakaan_digital_ilmu\
+
+3. Buat Database
+
+CREATE DATABASE db_perpustakaan;
+
+Kemudian import:
+
+db_perpustakaan.sql
+
+4. Konfigurasi Database
+
+Buka:
+
+config/database.php
+
+Sesuaikan host, nama database, username, dan password dengan konfigurasi lokal.
+
+5. Jalankan Project
+
+Aktifkan Apache dan MySQL, kemudian akses:
+
+http://localhost/Perpustakaan_digital_ilmu/
+
+📌 Status Project
+
+Perpustakaan Digital Ilmu merupakan aplikasi perpustakaan berbasis web yang menyediakan pengelolaan katalog, anggota, peminjaman, pengembalian, denda, rating, komentar, presensi, notifikasi, serta panel Admin dan Petugas.
+
+👨‍💻 Kontributor
+
+Informasi identitas kontributor tidak ditemukan secara eksplisit pada source code dan SQL yang diberikan.
+
+📜 Lisensi
+
+Tidak terdapat file lisensi khusus yang teridentifikasi pada project.
+
+<div align="center">
+
+📚 Perpustakaan Digital Ilmu
+
+Sistem Informasi Perpustakaan Sekolah Berbasis Web
+
 </div>
-
-</body>
-</html>
