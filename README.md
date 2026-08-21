@@ -14,7 +14,7 @@ Aplikasi dikembangkan menggunakan **PHP Native, MySQL/MariaDB, PDO, Tailwind CSS
 
 **Flowchart:** ...
 
-**ERD:** ...
+**ERD:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png
 
 ---
 
