@@ -8,7 +8,7 @@ Aplikasi dikembangkan menggunakan **PHP Native, MySQL/MariaDB, PDO, Tailwind CSS
 
 **Live Demo:** https://perpustakaandigitalilmu.infinityfreeapp.com
 
-**Mockup:** ...
+**Mockup:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg
 
 **Use Case Diagram:** ...
 
