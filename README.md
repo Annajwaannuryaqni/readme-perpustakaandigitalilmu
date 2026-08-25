@@ -12,7 +12,7 @@ Aplikasi dikembangkan menggunakan **PHP Native, MySQL/MariaDB, PDO, Tailwind CSS
 
 **Use Case Diagram:** ...
 
-**Flowchart:** ...
+**Flowchart:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png
 
 **ERD:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png
 
