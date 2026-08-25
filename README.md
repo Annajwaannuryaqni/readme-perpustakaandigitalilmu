@@ -6,21 +6,21 @@ Sistem ini mencakup pengelolaan data buku dan anggota, peminjaman dan pengembali
 
 Aplikasi dikembangkan menggunakan **PHP Native, MySQL/MariaDB, PDO, Tailwind CSS, dan JavaScript** dengan menerapkan sistem autentikasi berdasarkan hak akses pengguna.
 
-**Live Demo:** https://perpustakaandigitalilmu.infinityfreeapp.com
+**Live Demo:** [https://perpustakaandigitalilmu.infinityfreeapp.com](https://perpustakaandigitalilmu.infinityfreeapp.com)
 
-**Mockup:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg
+**Mockup:** [Lihat Mockup](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg)
 
-**Use Case Diagram:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/usecase_diagram.jpg
+**Use Case Diagram:** [Lihat Use Case Diagram](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/usecase_diagram.jpg)
 
-**Flowchart:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png
+**Flowchart:** [Lihat Flowchart](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png)
 
-**ERD:** https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png
+**ERD:** [Lihat ERD](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png)
 
 ---
 
 ## 1. Struktur Folder
 
-```text
+```
 Perpustakaan_Digital_Ilmu/
 │
 ├── admin/
@@ -104,8 +104,6 @@ Perpustakaan_Digital_Ilmu/
 └── db_perpustakaan.sql
 ```
 
----
-
 ## 2. Fitur Utama
 
 ### 🏠 Beranda
@@ -159,7 +157,7 @@ Administrator dapat:
 ### 💰 Denda
 Sistem menghitung denda berdasarkan jumlah hari keterlambatan.
 
-**Tarif denda: Rp1.000/hari keterlambatan.**
+Tarif denda: **Rp1.000/hari** keterlambatan.
 
 ### ⭐ Rating dan 💬 Komentar
 Siswa dapat memberikan rating dan komentar terhadap buku yang telah dipinjam.
@@ -173,8 +171,6 @@ Siswa dapat melakukan presensi kunjungan perpustakaan dengan validasi jadwal ope
 - Notifikasi berdasarkan tipe pengguna.
 - Suara notifikasi.
 - Notifikasi berdasarkan aktivitas tertentu.
-
----
 
 ## 3. Peran Pengguna
 
@@ -208,8 +204,6 @@ Siswa menggunakan layanan perpustakaan:
 - Melakukan presensi kunjungan.
 - Melihat dashboard pribadi.
 
----
-
 ## 4. Teknologi
 
 | Teknologi | Penggunaan |
@@ -224,31 +218,25 @@ Siswa menggunakan layanan perpustakaan:
 | PHP Session | Autentikasi |
 | bcrypt | Hashing password |
 
----
-
 ## 5. Struktur Database
 
-Database yang digunakan:
-
-```text
-db_perpustakaan
-```
+Database yang digunakan: `db_perpustakaan`
 
 Tabel utama:
-- `admin`
-- `anggota`
-- `buku`
-- `kategori`
-- `petugas`
-- `transaksi`
-- `rating`
-- `komentar`
-- `kunjungan`
-- `notifications`
+- admin
+- anggota
+- buku
+- kategori
+- petugas
+- transaksi
+- rating
+- komentar
+- kunjungan
+- notifications
 
 ### Relasi Utama
 
-```text
+```
 kategori
    │
    └──< buku
@@ -264,8 +252,6 @@ buku ───< rating >── anggota
 anggota ───< kunjungan
 ```
 
----
-
 ## 6. Instalasi
 
 ### Persyaratan
@@ -275,23 +261,15 @@ anggota ───< kunjungan
 - Web browser modern.
 
 ### Langkah Instalasi
-
 1. Letakkan folder project di folder `htdocs` jika menggunakan XAMPP.
-2. Jalankan **Apache** dan **MySQL**.
-3. Buka **phpMyAdmin**.
+2. Jalankan Apache dan MySQL.
+3. Buka phpMyAdmin.
 4. Buat database `db_perpustakaan`.
 5. Import file `db_perpustakaan.sql`.
 6. Periksa konfigurasi database di `config/database.php`.
 7. Sesuaikan host, database, username, dan password.
-8. Buka:
-
-```text
-http://localhost/Perpustakaan_Digital_Ilmu/
-```
-
+8. Buka: `http://localhost/Perpustakaan_Digital_Ilmu/`
 9. Login menggunakan akun yang tersedia pada database.
-
----
 
 ## 7. Keamanan
 
@@ -306,16 +284,12 @@ Aplikasi menerapkan:
 - Transaction database pada proses peminjaman dan pengembalian.
 - Penguncian stok saat transaksi untuk membantu mencegah konflik stok.
 
----
-
 ## 8. Kontributor
 
 **Najwa**
 
 Project ini dikembangkan sebagai aplikasi perpustakaan digital sekolah untuk mendukung proses pembelajaran dan pengelolaan layanan perpustakaan secara digital.
 
----
-
 ## 9. Catatan
 
-Aplikasi ini dibuat untuk kebutuhan **perpustakaan sekolah** dan masih dapat dikembangkan lebih lanjut, seperti penambahan laporan transaksi, export data, pencetakan laporan, statistik yang lebih lengkap, serta peningkatan sistem keamanan dan manajemen pengguna.
+Aplikasi ini dibuat untuk kebutuhan perpustakaan sekolah dan masih dapat dikembangkan lebih lanjut, seperti penambahan laporan transaksi, export data, pencetakan laporan, statistik yang lebih lengkap, serta peningkatan sistem keamanan dan manajemen pengguna.
