@@ -59,7 +59,9 @@ Aplikasi pengelolaan layanan perpustakaan sekolah secara terintegrasi (buku, ang
 ## 🗂️ Struktur Folder
 
 <details>
-<summary><strong>Klik untuk melihat struktur direktori proyek</strong></summary>
+<summary><b>Klik untuk melihat struktur direktori proyek</b></summary>
+
+<br>
 
 ```text
 Perpustakaan_digital_ilmu-main/
