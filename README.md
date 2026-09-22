@@ -1,22 +1,22 @@
-# 📚 Perpustakaan Digital Ilmu
+# **<font size="6">📚 Perpustakaan Digital Ilmu</font>**
 
-> **Sistem Informasi Perpustakaan Sekolah Berbasis Web**
+> **<font size="3">Sistem Informasi Perpustakaan Sekolah Berbasis Web</font>**
 
 Aplikasi pengelolaan layanan perpustakaan sekolah secara terintegrasi (buku, anggota, transaksi, denda, presensi, hingga laporan).
 
 ---
 
-## 🔗 Tautan Penting
+## **<font size="5">🔗 Tautan Penting</font>**
 
-* 🌐 **Live Demo:** [perpustakaandigitalilmu.infinityfreeapp.com](https://perpustakaandigitalilmu.infinityfreeapp.com)
-* 🖼️ **Mockup:** [Lihat Gambar](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg)
-* 📌 **Use Case Diagram:** [Lihat Diagram](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/usecase_diagram.jpg)
-* 🔄 **Flowchart:** [Lihat Flowchart](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png)
-* 🗄️ **ERD:** [Lihat ERD](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png)
+* 🌐 **Live Demo:** [<font color="#0066cc">perpustakaandigitalilmu.infinityfreeapp.com</font>](https://perpustakaandigitalilmu.infinityfreeapp.com)
+* 🖼️ **Mockup:** [<font color="#0066cc">Lihat Gambar</font>](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg)
+* 📌 **Use Case Diagram:** [<font color="#0066cc">Lihat Diagram</font>](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/usecase_diagram.jpg)
+* 🔄 **Flowchart:** [<font color="#0066cc">Lihat Flowchart</font>](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png)
+* 🗄️ **ERD:** [<font color="#0066cc">Lihat ERD</font>](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png)
 
 ---
 
-## 👥 Hak Akses & Role
+## **<font size="5">👥 Hak Akses & Role</font>**
 
 | Role | Akses Utama |
 |---|---|
@@ -26,14 +26,14 @@ Aplikasi pengelolaan layanan perpustakaan sekolah secara terintegrasi (buku, ang
 
 ---
 
-## ✨ Fitur Utama
+## **<font size="5">✨ Fitur Utama</font>**
 
-### 📖 Katalog & Anggota
+### **<font size="4">📖 Katalog & Anggota</font>**
 * Katalog buku digital, pencarian, kategori, dan detail lokasi rak.
 * Pengarsipan buku tanpa menghapus riwayat transaksi.
 * Pencarian dan verifikasi data anggota (NIS & Kelas).
 
-### 📚 Peminjaman & Pengembalian
+### **<font size="4">📚 Peminjaman & Pengembalian</font>**
 * **Masa Pinjam:** Default 7 hari (format struk mendukung printer thermal 80mm).
 * **Validasi Otomatis:** Pengecekan stok, status anggota, denda aktif, dan peminjaman ganda.
 * **Opsi Pengembalian:** Pengajuan via akun siswa atau pemrosesan langsung oleh Petugas.
@@ -41,7 +41,7 @@ Aplikasi pengelolaan layanan perpustakaan sekolah secara terintegrasi (buku, ang
   * **Baik:** Stok bertambah (+1).
   * **Rusak / Hilang:** Stok tidak otomatis bertambah, dikenakan denda kondisi, dan otomatis membuat **Laporan Buku Hilang** (khusus status hilang).
 
-### 💰 Denda & Pembayaran
+### **<font size="4">💰 Denda & Pembayaran</font>**
 * **Rumus Denda:** `Denda Keterlambatan (Rp1.000/hari) + Denda Kondisi`
 * **Tarif Denda Kondisi:**
   * Baik: Rp0
@@ -49,14 +49,14 @@ Aplikasi pengelolaan layanan perpustakaan sekolah secara terintegrasi (buku, ang
   * Hilang: Rp50.000
 * **Metode Pembayaran:** Cash (konfirmasi Petugas) & QRIS (upload bukti transfer dengan fitur *Approve/Reject* oleh Petugas).
 
-### 🏫 Presensi & Fitur Lainnya
+### **<font size="4">🏫 Presensi & Fitur Lainnya</font>**
 * **Presensi Kunjungan:** Validasi jam operasional (Senin–Kamis: 07:30–15:30 WIB, Jumat: 07:30–14:00 WIB) & pencegahan presensi ganda harian.
 * **Rating & Komentar:** Khusus untuk siswa yang telah menyelesaikan transaksi peminjaman.
 * **Notifikasi:** Realtime/In-app notification dengan efek suara.
 
 ---
 
-## 🗂️ Struktur Folder
+## **<font size="5">🗂️ Struktur Folder</font>**
 
 <details>
 <summary><strong>Klik untuk melihat struktur direktori proyek</strong></summary>
