@@ -1,197 +1,295 @@
-<div align="center">
-
 📚 Perpustakaan Digital Ilmu
 
-Sistem informasi perpustakaan sekolah berbasis web
+Sistem Informasi Perpustakaan Sekolah Berbasis Web
 
-Mengelola buku, anggota, peminjaman, pengembalian, denda, pembayaran,
-presensi, rating, komentar, notifikasi, dan laporan buku hilang.
+Aplikasi ini digunakan untuk mengelola kegiatan perpustakaan sekolah, mulai dari buku, anggota, peminjaman, pengembalian, denda, pembayaran, presensi, rating, komentar, notifikasi, hingga laporan buku hilang.
 
-<br>
+🔗 Daftar Tautan
 
-<a href="https://perpustakaandigitalilmu.infinityfreeapp.com">🌐 Live Demo</a> ·
-<a href="https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg">🖼️ Mockup</a> ·
-<a href="https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/usecase_diagram.jpg">📌 Use Case</a> ·
-<a href="https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png">🔄 Flowchart</a> ·
-<a href="https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png">🗄️ ERD</a>
+🌐 Live Demo
+https://perpustakaandigitalilmu.infinityfreeapp.com
 
-</div>
+🖼️ Mockup
+https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg
 
-📋 Daftar Isi
+📌 Use Case Diagram
+https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/usecase_diagram.jpg
 
-Tentang Aplikasi
+🔄 Flowchart
+https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png
 
-Fitur Utama
+🗄️ ERD
+https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/ERD-PERPUSTAKAAN.png
 
-Hak Akses
+📖 1. Tentang Aplikasi
 
-Alur Sistem
+1.1 Tujuan
 
-Struktur Folder
+Perpustakaan Digital Ilmu dibuat untuk membantu sekolah mengelola layanan perpustakaan secara lebih terstruktur.
 
-Teknologi
+1.2 Role Sistem
 
-Database
-
-Keamanan
-
-Instalasi Lokal
-
-Pengelolaan Waktu
-
-Catatan Pengembangan
-
-📖 Tentang Aplikasi
-
-Perpustakaan Digital Ilmu dibuat untuk membantu sekolah mengelola layanan perpustakaan secara lebih terstruktur dan terintegrasi.
-
-Sistem memiliki 3 role utama:
+No.
 
 Role
 
-Fokus
+Fokus Utama
+
+1
 
 Admin
 
 Monitoring sistem dan pengelolaan akun Petugas
 
+2
+
 Petugas
 
 Operasional buku, anggota, peminjaman, pengembalian, dan denda
+
+3
 
 Siswa
 
 Peminjaman, pengembalian, pembayaran denda, presensi, rating, dan komentar
 
-Teknologi yang digunakan
+1.3 Teknologi Utama
 
-PHP Native · MySQL/MariaDB · PDO · HTML5 · CSS3 · JavaScript · Tailwind CSS (halaman tertentu)
+PHP Native
 
-✨ Fitur Utama
+MySQL / MariaDB
 
-🏠 Beranda & Katalog
+PDO
 
-Landing page perpustakaan
+HTML
 
-Pencarian dan katalog buku
+CSS
 
-Kategori buku dan cover
+JavaScript
 
-Video perpustakaan
+Tailwind CSS pada halaman tertentu
 
-Halaman bantuan
+✨ 2. Fitur Utama
 
-📚 Manajemen Buku
+2.1 Beranda dan Katalog
 
-Dikelola dari sisi Petugas:
+Landing page perpustakaan.
 
-Tambah, edit, arsip, dan pulihkan buku
+Pencarian dan katalog buku.
 
-Kelola kode buku, judul, pengarang, penerbit, tahun terbit, kategori, stok, lokasi rak, dan deskripsi
+Kategori buku.
 
-Upload cover buku
+Cover buku.
 
-Buku yang diarsipkan tidak ditampilkan sebagai koleksi aktif, tetapi riwayat transaksi tetap dipertahankan
+Video perpustakaan.
 
-👥 Manajemen Anggota
+Halaman bantuan.
 
-Petugas dapat melihat dan mencari data anggota, termasuk NIS dan kelas, untuk kebutuhan transaksi.
+2.2 Manajemen Buku
 
-👨‍💼 Manajemen Petugas
+Dikelola dari sisi Petugas.
+
+Menambah buku.
+
+Mengedit data buku.
+
+Mengarsipkan buku.
+
+Memulihkan buku yang diarsipkan.
+
+Mengelola kode buku.
+
+Mengelola judul buku.
+
+Mengelola pengarang.
+
+Mengelola penerbit.
+
+Mengelola tahun terbit.
+
+Mengelola kategori.
+
+Mengelola stok.
+
+Mengelola lokasi rak.
+
+Mengelola deskripsi.
+
+Mengunggah cover buku.
+
+Buku yang diarsipkan tidak ditampilkan sebagai koleksi aktif.
+
+Riwayat transaksi buku tetap dipertahankan.
+
+2.3 Manajemen Anggota
+
+Petugas dapat:
+
+Melihat data anggota.
+
+Mencari data anggota.
+
+Melihat NIS anggota.
+
+Melihat kelas anggota.
+
+Menggunakan data anggota dalam proses transaksi.
+
+2.4 Manajemen Petugas
 
 Admin dapat:
 
-Menambah akun Petugas
+Menambah akun Petugas.
 
-Melihat daftar Petugas
+Melihat daftar Petugas.
 
-Mengaktifkan atau menonaktifkan akun
+Mengaktifkan akun Petugas.
 
-Mengelola akun Petugas
+Menonaktifkan akun Petugas.
 
-Sistem mendukung beberapa akun Petugas dan tetap menggunakan tiga role: Admin, Petugas, dan Siswa.
+Mengelola akun Petugas.
 
-📖 Peminjaman Buku
+Sistem mendukung beberapa akun Petugas dengan tiga role utama:
 
-Peminjaman dapat dilakukan melalui dua jalur.
-
-Siswa
-
-Pilih buku → Konfirmasi peminjaman → Transaksi berhasil
+Admin
 
 Petugas
 
-Pilih anggota → Pilih buku → Proses peminjaman
-
-Sistem melakukan pengecekan stok, status anggota, denda belum lunas, keterlambatan aktif, dan peminjaman ganda.
-
-Masa peminjaman: 7 hari.
-
-Setelah transaksi berhasil, siswa dapat melihat dan mencetak bukti peminjaman dengan format untuk printer thermal 80 mm.
-
-🔄 Pengembalian Buku
-
-Terdapat dua jalur pengembalian.
-
-1. Siswa mengajukan pengembalian
-
 Siswa
-  ↓
-Ajukan Pengembalian
-  ↓
-Menunggu Konfirmasi
-  ↓
-Petugas memproses pengembalian
 
-2. Siswa datang langsung ke perpustakaan
+📚 3. Peminjaman Buku
 
-Siswa membawa buku
-  ↓
-Petugas membuka Pengembalian
-  ↓
-Pilih transaksi Dipinjam
-  ↓
-Proses Pengembalian
+3.1 Peminjaman oleh Siswa
 
-Petugas wajib memilih kondisi buku:
+Alur:
+
+1. Pilih buku
+2. Konfirmasi peminjaman
+3. Transaksi berhasil
+
+3.2 Peminjaman oleh Petugas
+
+Alur:
+
+1. Pilih anggota
+2. Pilih buku
+3. Proses peminjaman
+
+3.3 Validasi Peminjaman
+
+Sistem melakukan pengecekan:
+
+Stok buku.
+
+Status anggota.
+
+Denda yang belum lunas.
+
+Keterlambatan aktif.
+
+Peminjaman ganda.
+
+3.4 Lama Peminjaman
+
+Masa peminjaman adalah 7 hari.
+
+Batas pengembalian dihitung dari tanggal peminjaman.
+
+3.5 Bukti Peminjaman
+
+Setelah transaksi berhasil:
+
+Siswa dapat melihat bukti peminjaman.
+
+Siswa dapat mencetak bukti peminjaman.
+
+Format disiapkan untuk printer thermal 80 mm.
+
+🔄 4. Pengembalian Buku
+
+Sistem menyediakan dua jalur pengembalian.
+
+4.1 Siswa Mengajukan Pengembalian
+
+1. Siswa
+2. Ajukan Pengembalian
+3. Menunggu Konfirmasi
+4. Petugas memproses pengembalian
+
+4.2 Siswa Datang Langsung ke Perpustakaan
+
+1. Siswa membawa buku
+2. Petugas membuka menu Pengembalian
+3. Pilih transaksi Dipinjam
+4. Proses Pengembalian
+
+4.3 Kondisi Buku
+
+Saat pengembalian, Petugas wajib memilih kondisi buku.
+
+No.
 
 Kondisi
 
 Denda Kondisi
 
+1
+
 Baik
 
 Rp0
+
+2
 
 Rusak
 
 Rp20.000
 
+3
+
 Hilang
 
 Rp50.000
 
-Ketentuan stok:
+4.4 Pengaruh Kondisi terhadap Stok
 
-Baik → stok bertambah 1
+Baik → stok bertambah 1.
 
-Rusak → stok tidak otomatis bertambah
+Rusak → stok tidak otomatis bertambah.
 
-Hilang → stok tidak otomatis bertambah
+Hilang → stok tidak otomatis bertambah.
 
-💰 Denda
+💰 5. Denda
 
-Denda keterlambatan: Rp1.000 per hari tanpa batas maksimum.
+5.1 Denda Keterlambatan
+
+Tarif denda adalah Rp1.000 per hari.
+
+Tidak ada batas maksimum denda keterlambatan.
+
+5.2 Denda Kondisi
+
+Buku Baik → Rp0.
+
+Buku Rusak → Rp20.000.
+
+Buku Hilang → Rp50.000.
+
+5.3 Rumus Denda
 
 Denda Total = Denda Keterlambatan + Denda Kondisi
 
-Contoh:
+5.4 Contoh Perhitungan
 
-Kasus
+No.
+
+Kondisi
 
 Perhitungan
 
 Total
+
+1
 
 21 hari terlambat + Rusak
 
@@ -199,252 +297,192 @@ Rp21.000 + Rp20.000
 
 Rp41.000
 
+2
+
 21 hari terlambat + Hilang
 
 Rp21.000 + Rp50.000
 
 Rp71.000
 
-📕 Laporan Buku Hilang
+📕 6. Laporan Buku Hilang
 
-Jika Petugas memilih kondisi Hilang, sistem otomatis membuat Laporan Buku Hilang yang menyimpan informasi transaksi, anggota, buku, petugas, tanggal laporan, denda kondisi, dan catatan.
+Jika Petugas memilih kondisi Hilang, sistem otomatis membuat laporan buku hilang.
 
-💳 Pembayaran Denda
+Data laporan mencakup:
 
-Sistem menyediakan Cash dan QRIS.
+Informasi transaksi.
 
-💵 Cash
+Data anggota.
 
-Siswa memilih Cash
-      ↓
-Pembayaran kepada Petugas
-      ↓
-Petugas mengonfirmasi
-      ↓
-Status Lunas
+Data buku.
 
-📱 QRIS
+Data Petugas.
 
-Pilih QRIS
-   ↓
-Tampilkan QRIS
-   ↓
-Lakukan pembayaran
-   ↓
-Upload bukti pembayaran
-   ↓
-Petugas melakukan verifikasi
-   ↓
-Diterima / Ditolak
+Tanggal laporan.
 
-Komponen
+Denda kondisi.
 
-Lokasi
+Catatan.
 
-QR pembayaran
+💳 7. Pembayaran Denda
 
-assets/qris_pembayaran.jpeg
+Sistem menyediakan dua metode pembayaran.
 
-Bukti pembayaran
+7.1 Pembayaran Cash
 
-uploads/bukti_pembayaran/
+1. Siswa memilih Cash
+2. Siswa melakukan pembayaran kepada Petugas
+3. Petugas mengonfirmasi pembayaran
+4. Status menjadi Lunas
 
-Status verifikasi
+7.2 Pembayaran QRIS
 
-Diterima / Ditolak
+1. Pilih QRIS
+2. Tampilkan QRIS
+3. Lakukan pembayaran
+4. Upload bukti pembayaran
+5. Petugas melakukan verifikasi
+6. Status Diterima atau Ditolak
 
-Jika bukti QRIS ditolak, siswa dapat mengunggah bukti baru.
+7.3 File Pembayaran
 
-⭐ Rating & 💬 Komentar
+QR pembayaran: assets/qris_pembayaran.jpeg
 
-Siswa dapat memberikan rating dan komentar setelah memiliki transaksi buku yang sudah selesai dikembalikan.
+Bukti pembayaran: uploads/bukti_pembayaran/
 
-🏫 Presensi Kunjungan
+Bukti QRIS dapat diterima.
 
-Siswa dapat melakukan presensi kunjungan dengan validasi jadwal operasional dan pencegahan presensi ganda pada hari yang sama.
+Bukti QRIS dapat ditolak dengan catatan.
+
+Jika ditolak, siswa dapat mengunggah bukti baru.
+
+⭐ 8. Rating dan Komentar
+
+Siswa dapat memberikan:
+
+Rating.
+
+Komentar.
+
+Pemberian rating dan komentar dilakukan setelah memiliki transaksi buku yang sudah selesai dikembalikan.
+
+🏫 9. Presensi Kunjungan
+
+Siswa dapat melakukan presensi kunjungan dengan:
+
+Validasi jadwal operasional.
+
+Pencegahan presensi ganda pada hari yang sama.
+
+9.1 Jam Operasional
+
+No.
 
 Hari
 
 Jam Operasional
 
+1
+
 Senin–Kamis
 
 07:30–15:30 WIB
+
+2
 
 Jumat
 
 07:30–14:00 WIB
 
+3
+
 Sabtu–Minggu
 
 Tutup
 
-🔔 Notifikasi
+🔔 10. Notifikasi
 
-Notifikasi dalam aplikasi
+Sistem memiliki:
 
-Status sudah/belum dibaca
+Notifikasi dalam aplikasi.
 
-Notifikasi berdasarkan aktivitas sistem
+Status sudah / belum dibaca.
 
-Suara notifikasi
+Notifikasi berdasarkan aktivitas sistem.
 
-Endpoint: api/notifications.php
+Suara notifikasi.
 
-👤 Hak Akses
+Endpoint notifikasi pada api/notifications.php.
 
-Fitur
+👤 11. Hak Akses
 
-Admin
+11.1 Admin
 
-Petugas
+Dashboard Admin.
 
-Siswa
+Melihat data transaksi.
 
-Dashboard
+Melihat data kunjungan.
 
-✅
+Mengelola akun Petugas.
 
-✅
+Memantau statistik dan informasi penting pada dashboard.
 
-✅
+11.2 Petugas
 
-Manajemen Petugas
+Dashboard Petugas.
 
-✅
+Data buku.
 
-—
+Data anggota.
 
-—
+Peminjaman.
 
-Data Buku
+Pengembalian.
 
-—
+Buku terlambat.
 
-✅
+Denda.
 
-Lihat
+Verifikasi pembayaran Cash / QRIS.
 
-Data Anggota
+Laporan buku hilang.
 
-—
+Aktivitas transaksi.
 
-✅
+Riwayat peminjaman.
 
-—
+Profil Petugas.
 
-Peminjaman
+11.3 Siswa
 
-Lihat
+Registrasi dan login.
 
-✅
+Dashboard pribadi.
 
-✅
+Katalog dan pencarian buku.
 
-Pengembalian
+Peminjaman buku.
 
-—
+Bukti peminjaman.
 
-✅
+Pengajuan pengembalian.
 
-Ajukan
+Pembayaran denda Cash / QRIS.
 
-Denda
+Upload bukti pembayaran QRIS.
 
-Lihat
+Rating dan komentar.
 
-✅
+Presensi kunjungan.
 
-Lihat/Bayar
-
-Verifikasi Pembayaran
-
-—
-
-✅
-
-—
-
-Laporan Buku Hilang
-
-—
-
-✅
-
-—
-
-Presensi
-
-Lihat
-
-Lihat
-
-✅
-
-Rating & Komentar
-
-Lihat
-
-Lihat
-
-✅
-
-Notifikasi
-
-✅
-
-✅
-
-✅
-
-🔄 Alur Sistem
-
-LOGIN
-  │
-  ▼
-Hak Akses sesuai Role
-  │
-  ├───────────────┬───────────────┐
-  ▼               ▼               ▼
-SISWA           PETUGAS         ADMIN
-  │               │               │
-  ├─ Peminjaman   ├─ Peminjaman   ├─ Monitoring
-  ├─ Pengembalian ├─ Pengembalian └─ Kelola Petugas
-  ├─ Pembayaran   ├─ Denda
-  └─ Presensi     └─ Verifikasi
-
-Pengembalian
-      │
-      ▼
- Pilih Kondisi Buku
-      │
- ┌────┼─────┐
- ▼    ▼     ▼
-Baik Rusak Hilang
- │    │       │
- │    └───┐   └──→ Laporan Buku Hilang
- │        │
- └────────┴────→ Hitung Denda
-                    │
-              ┌─────┴─────┐
-              ▼           ▼
-            Cash         QRIS
-              │           │
-              │      Upload Bukti
-              │           │
-              └─────┬─────┘
-                    ▼
-            Verifikasi Petugas
-                    │
-                    ▼
-                  Lunas
-
-🗂️ Struktur Folder
+🗂️ 12. Struktur Folder
 
 Struktur berikut mengikuti project terbaru yang digunakan.
 
 <details>
-<summary><strong>📁 Klik untuk melihat struktur lengkap</strong></summary>
+<summary><strong>Klik untuk melihat struktur lengkap</strong></summary>
 
 Perpustakaan_digital_ilmu-main/
 │
@@ -532,81 +570,121 @@ Perpustakaan_digital_ilmu-main/
 
 Catatan: Project terbaru yang diperiksa tidak menyertakan db_perpustakaan.sql.
 
-🛠️ Teknologi
+🛠️ 13. Teknologi yang Digunakan
+
+No.
 
 Teknologi
 
 Penggunaan
 
+1
+
 PHP Native
 
 Backend dan proses aplikasi
+
+2
 
 MySQL / MariaDB
 
 Penyimpanan data
 
+3
+
 PDO
 
 Koneksi dan query database
+
+4
 
 HTML5
 
 Struktur halaman
 
+5
+
 CSS3
 
 Tampilan dan responsive layout
+
+6
 
 Tailwind CSS
 
 Digunakan pada halaman tertentu
 
+7
+
 JavaScript
 
 Interaksi, modal, jam realtime, dan notifikasi
+
+8
 
 PHP Session
 
 Autentikasi dan hak akses
 
+9
+
 bcrypt
 
-Hashing password menggunakan PASSWORD_BCRYPT
+Hashing password dengan PASSWORD_BCRYPT
 
-🗄️ Database
+🗄️ 14. Database
 
 Project menggunakan database db_perpustakaan.
 
-Tabel utama
+14.1 Tabel
 
 admin
+
 anggota
+
 buku
+
 kategori
+
 petugas
+
 transaksi
+
 rating
+
 komentar
+
 kunjungan
+
 notifications
+
 pembayaran_denda
+
 laporan_buku_hilang
 
-Relasi utama
+14.2 Relasi Utama
 
 kategori
+   │
    └──< buku
+           │
            └──< transaksi >── anggota
+                    │
                     └── petugas
 
 buku ───< rating >── anggota
+
 buku ───< komentar >── anggota
+
 anggota ───< kunjungan
+
 transaksi ───< pembayaran_denda
+
 transaksi ───< laporan_buku_hilang
 
-Data pengembalian pada transaksi juga mencakup:
+14.3 Data Pengembalian pada Tabel Transaksi
+
+Tabel transaksi juga mencakup:
 
 kondisi_buku
 
@@ -614,120 +692,153 @@ catatan_kondisi
 
 denda_kondisi
 
-Tabel pembayaran_denda menyimpan metode pembayaran, bukti pembayaran, status verifikasi, dan informasi verifikasi.
+14.4 Data Pembayaran
 
-🔐 Keamanan
+Tabel pembayaran_denda menyimpan:
+
+Metode pembayaran.
+
+Bukti pembayaran.
+
+Status verifikasi.
+
+Informasi verifikasi.
+
+🔄 15. Alur Sistem
+
+1. LOGIN
+      ↓
+2. Hak akses sesuai role
+      ↓
+3. SISWA / PETUGAS / ADMIN
+      ↓
+4. Proses sesuai hak akses
+      ↓
+5. Peminjaman
+      ↓
+6. Pengembalian
+      ↓
+7. Pemeriksaan kondisi buku
+      ↓
+8. Baik / Rusak / Hilang
+      ↓
+9. Perhitungan denda
+      ↓
+10. Pembayaran Cash / QRIS
+      ↓
+11. Verifikasi Petugas
+      ↓
+12. Status Lunas
+
+15.1 Alur Kondisi Buku
+
+1. Baik
+   → Denda kondisi Rp0
+   → Stok bertambah
+
+2. Rusak
+   → Denda kondisi Rp20.000
+   → Stok tidak otomatis bertambah
+
+3. Hilang
+   → Denda kondisi Rp50.000
+   → Stok tidak otomatis bertambah
+   → Laporan Buku Hilang dibuat
+
+🔐 16. Keamanan
 
 Aplikasi menerapkan beberapa mekanisme keamanan dasar:
 
-Password hashing dengan PASSWORD_BCRYPT
+Password hashing dengan PASSWORD_BCRYPT.
 
-Verifikasi password dengan password_verify()
+Verifikasi password dengan password_verify().
 
-Prepared statement melalui PDO
+Prepared statement melalui PDO.
 
-CSRF protection
+CSRF protection.
 
-Session authentication berdasarkan role
+Session authentication berdasarkan role.
 
-Session regeneration setelah login
+Session regeneration setelah login.
 
-Pembatasan percobaan login pada masing-masing role
+Pembatasan percobaan login pada masing-masing role.
 
-Pemeriksaan akses halaman melalui fungsi autentikasi
+Pemeriksaan akses halaman melalui fungsi autentikasi.
 
-Transaction database pada proses penting seperti peminjaman dan pengembalian
+Transaction database pada proses penting seperti peminjaman dan pengembalian.
 
-Penguncian transaksi saat proses pengembalian untuk membantu mencegah pemrosesan ganda
+Penguncian transaksi saat proses pengembalian untuk membantu mencegah pemrosesan ganda.
 
-🚀 Instalasi Lokal
+🚀 17. Instalasi Lokal
 
-Persyaratan
+17.1 Persyaratan
 
-XAMPP / Laragon atau web server sejenis
+XAMPP / Laragon atau web server sejenis.
 
-PHP 8.2 atau versi yang kompatibel
+PHP 8.2 atau versi yang kompatibel.
 
-MySQL / MariaDB
+MySQL / MariaDB.
 
-Browser modern
+Browser modern.
 
-Langkah
+17.2 Langkah Instalasi
 
-1. Letakkan folder project di htdocs jika menggunakan XAMPP.
+Letakkan folder project ke dalam htdocs jika menggunakan XAMPP.
 
-2. Jalankan Apache dan MySQL.
+Jalankan Apache dan MySQL.
 
-3. Buat database:
+Buat database dengan nama db_perpustakaan.
 
-Nama database: db_perpustakaan
+Sesuaikan konfigurasi koneksi pada config/database.php.
 
-4. Sesuaikan konfigurasi koneksi pada:
+Pastikan seluruh tabel yang dibutuhkan aplikasi tersedia.
 
-config/database.php
+Pastikan tabel pembayaran_denda dan laporan_buku_hilang tersedia.
 
-5. Pastikan seluruh tabel yang dibutuhkan aplikasi tersedia, termasuk:
-
-pembayaran_denda
-laporan_buku_hilang
-
-6. Buka aplikasi:
+Buka aplikasi melalui browser:
 
 http://localhost/Perpustakaan_digital_ilmu-main/
 
-7. Login menggunakan akun yang tersedia pada database.
+Login menggunakan akun yang tersedia pada database.
 
 Catatan: Project terbaru yang diperiksa tidak menyertakan dump SQL db_perpustakaan.sql, sehingga file SQL perlu disediakan dari database/schema project yang digunakan.
 
-🕒 Pengelolaan Waktu
+🕒 18. Pengelolaan Waktu
 
 Aplikasi menggunakan timezone Asia/Jakarta (WIB) pada proses PHP yang berkaitan dengan tanggal dan waktu.
 
-Implementasi
+Beberapa proses menggunakan:
 
-Fungsi
+date('Y-m-d') untuk tanggal.
 
-date('Y-m-d')
+date('H:i:s') untuk waktu.
 
-Mengambil tanggal
+strtotime('+7 days') untuk menentukan batas pengembalian.
 
-date('H:i:s')
+JavaScript setInterval(..., 1000) pada halaman presensi untuk memperbarui jam realtime di browser.
 
-Mengambil waktu
-
-strtotime('+7 days')
-
-Menentukan batas pengembalian
-
-setInterval(..., 1000)
-
-Memperbarui jam realtime pada halaman presensi
-
-📌 Catatan Pengembangan
+📌 19. Catatan Pengembangan
 
 Versi saat ini menggunakan satu alur operasional Petugas untuk menangani transaksi dari peminjaman sampai pengembalian.
 
 Pengembangan lanjutan yang masih dapat dilakukan:
 
-Export laporan yang lebih lengkap
+Export laporan yang lebih lengkap.
 
-Statistik dan analitik tambahan
+Statistik dan analitik tambahan.
 
-Pencetakan laporan transaksi
+Pencetakan laporan transaksi.
 
-Penguatan validasi dan keamanan file upload
+Penguatan validasi dan keamanan file upload.
 
-Pengembangan manajemen Petugas sesuai kebutuhan sistem
+Pengembangan manajemen Petugas jika kebutuhan sistem bertambah.
 
-👩‍💻 Kontributor
+👩‍💻 20. Kontributor
 
 Najwa
 
 Project ini dikembangkan sebagai aplikasi perpustakaan digital sekolah untuk membantu proses pengelolaan layanan perpustakaan secara terintegrasi.
 
-<div align="center">
-
-📚 Perpustakaan Digital Ilmu
-Dokumentasi Project
-
-</div>
+<p align="center">
+  <sub>Perpustakaan Digital Ilmu • Dokumentasi Project</sub>
+</p>
