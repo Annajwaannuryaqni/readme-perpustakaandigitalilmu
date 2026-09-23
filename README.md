@@ -23,7 +23,7 @@ Aplikasi pengelolaan layanan perpustakaan sekolah secara terintegrasi — mulai 
 | Tautan | Deskripsi |
 | :--- | :--- |
 | 🌐 [Live Demo](https://perpustakaandigitalilmu.infinityfreeapp.com) | Coba langsung aplikasinya |
-| 🌐 [REPOSITORY ](https://perpustakaandigitalilmu.infinityfreeapp.com) | Coba langsung aplikasinya |
+| 🌐 [REPOSITORY ](https://github.com/Annajwaannuryaqni/Perpustakaan_digital_ilmu.git) | REPOSITORY GITHUB |
 | 🖼️ [Mockup](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/mockup_ukk.jpg) | Tampilan antarmuka aplikasi |
 | 📌 [Use Case Diagram](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/usecase_diagram.jpg) | Diagram interaksi pengguna |
 | 🔄 [Flowchart](https://raw.githubusercontent.com/Annajwaannuryaqni/readme-perpustakaandigitalilmu/refs/heads/main/flowchart.png) | Alur proses sistem |
